@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -6,19 +8,26 @@ public class HerosData : ScriptableObject
 {
     [Header("Heros")]
     [SerializeField]
-    private HeroData[] heros;
+    private List<HeroData> herosData;
 
 
 
 
     public int GetHerosCount()
     {
-        return heros.Length; 
+        return herosData.Count; 
     }
 
     public HeroData GetHeroData(int heroIndex)
     {
-        return heros[heroIndex];
+        return herosData[heroIndex];
     }
+    public HeroData GetHeroData(string heroID)
+    {
+        HeroData heroData = herosData.Where(data => data.id == heroID).First();
+        return heroData;
+    }
+
+    
 
 }

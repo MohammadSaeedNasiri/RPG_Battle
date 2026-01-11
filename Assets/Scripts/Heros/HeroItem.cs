@@ -20,6 +20,7 @@ public class HeroItem : MonoBehaviour
     public void SetFocusHeroItem()
     {
         haveFocusFrame.SetActive(true);
+        HeroInformationViewer.Instance.ShowHeroInformations(heroData);
     }
 
 
