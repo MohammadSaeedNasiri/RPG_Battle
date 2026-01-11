@@ -82,7 +82,13 @@ public class HeroInformationViewer : MonoBehaviour
     private void CheckIsUsableHero(int requiredWarCount)
     {
         int playerPlayedWarCount = PlayerExprienceManager.Instance.GetPlayerPlayedWarCount();
-
-        useHeroButton.interactable = false;
+        if (playerPlayedWarCount >= requiredWarCount)
+        {
+            useHeroButton.interactable = true;
+        }
+        else
+        {
+            useHeroButton.interactable = false;
+        }
     }
 }

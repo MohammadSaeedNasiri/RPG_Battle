@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class HerosLoader : MonoBehaviour
+public class HeroItemsLoader : MonoBehaviour
 {
     //Dependency
     public HerosData herosData;
+    public HeroItemsManager heroItemsManager;
 
     //Prefab and Containers
     public GameObject heroItemsPrefab;
@@ -23,21 +22,12 @@ public class HerosLoader : MonoBehaviour
         int herosCount = herosData.GetHerosCount();
 
         HeroData heroData;
-        for (int i = 0; i < herosCount;i++)
+        for (int i = 0; i < herosCount; i++)
         {
             heroData = herosData.GetHeroData(i);
-
-            GameObject heroItem = Instantiate(heroItemsPrefab, heroItemsContainer);//Generate hero item
-            heroItem.GetComponent<HeroItem>().LoadHeroItem(heroData);
-            
-            
+            HeroItem heroItem = Instantiate(heroItemsPrefab, heroItemsContainer).GetComponent<HeroItem>();//Generate hero item
+            heroItem.LoadHeroItem(heroData);
+            heroItem.SetOnSelectedHeroEvent(heroItemsManager.OnSelectedHeroItem);
         }
-
-
     }
-
-    /*void HeroItemSetData()
-    {
-
-    }*/
 }

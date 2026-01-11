@@ -12,89 +12,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a1c5a2ce6779f242b9910e1062df2b1, type: 3}
   m_Name: HerosData
   m_EditorClassIdentifier: 
-  heros:
-  - id: hero_1
-    name: Hero 1
-    baseHealth: 10
-    baseAttackPower: 2
-    warCountToUnlock: 0
-    maxExprience: 0
-    image: {fileID: 21300000, guid: 9fc24de4f48dc0e4986600451ca8f854, type: 3}
-  - id: hero_2
-    name: Hero 2
-    baseHealth: 15
-    baseAttackPower: 3
-    warCountToUnlock: 0
-    maxExprience: 0
-    image: {fileID: 21300000, guid: d5e96a0a7abf9784f82b41ddb352eb61, type: 3}
-  - id: hero_3
-    name: Hero 3
-    baseHealth: 20
-    baseAttackPower: 4
-    warCountToUnlock: 0
-    maxExprience: 0
-    image: {fileID: 21300000, guid: fcfc2e70271a03c4694bc3a3b437c703, type: 3}
-  - id: hero_4
-    name: Hero 4
-    baseHealth: 25
-    baseAttackPower: 5
-    warCountToUnlock: 3
-    maxExprience: 0
-    image: {fileID: 21300000, guid: 8d2e47fb9674bfe4e9fe1280a7b5ac2a, type: 3}
-  - id: hero_5
-    name: Hero 5
-    baseHealth: 30
-    baseAttackPower: 6
-    warCountToUnlock: 6
-    maxExprience: 0
-    image: {fileID: 21300000, guid: 0e3050dd9c086f64fae5284b5ffab169, type: 3}
-  - id: hero_6
-    name: Hero 6
-    baseHealth: 35
-    baseAttackPower: 10
-    warCountToUnlock: 9
-    maxExprience: 0
-    image: {fileID: 21300000, guid: 9bd56e91c608803428e3a873d762fd6c, type: 3}
   herosData:
   - id: hero_1
     name: Hero 1
     baseHealth: 10
-    baseAttackPower: 2
-    warCountToUnlock: 0
-    maxExprience: 0
+    baseAttackPower: 5
+    requiredWarCount: 0
+    maxExprience: 20
     image: {fileID: 21300000, guid: 9fc24de4f48dc0e4986600451ca8f854, type: 3}
   - id: hero_2
     name: Hero 2
-    baseHealth: 15
-    baseAttackPower: 3
-    warCountToUnlock: 0
-    maxExprience: 0
+    baseHealth: 30
+    baseAttackPower: 15
+    requiredWarCount: 0
+    maxExprience: 30
     image: {fileID: 21300000, guid: d5e96a0a7abf9784f82b41ddb352eb61, type: 3}
   - id: hero_3
     name: Hero 3
-    baseHealth: 20
-    baseAttackPower: 4
-    warCountToUnlock: 0
-    maxExprience: 0
+    baseHealth: 35
+    baseAttackPower: 20
+    requiredWarCount: 0
+    maxExprience: 40
     image: {fileID: 21300000, guid: fcfc2e70271a03c4694bc3a3b437c703, type: 3}
   - id: hero_4
     name: Hero 4
-    baseHealth: 25
-    baseAttackPower: 5
-    warCountToUnlock: 3
-    maxExprience: 0
+    baseHealth: 40
+    baseAttackPower: 25
+    requiredWarCount: 3
+    maxExprience: 50
     image: {fileID: 21300000, guid: 8d2e47fb9674bfe4e9fe1280a7b5ac2a, type: 3}
   - id: hero_5
     name: Hero 5
-    baseHealth: 30
-    baseAttackPower: 6
-    warCountToUnlock: 6
-    maxExprience: 0
+    baseHealth: 50
+    baseAttackPower: 30
+    requiredWarCount: 6
+    maxExprience: 60
     image: {fileID: 21300000, guid: 0e3050dd9c086f64fae5284b5ffab169, type: 3}
   - id: hero_6
     name: Hero 6
-    baseHealth: 35
-    baseAttackPower: 10
-    warCountToUnlock: 9
-    maxExprience: 0
+    baseHealth: 60
+    baseAttackPower: 35
+    requiredWarCount: 9
+    maxExprience: 70
     image: {fileID: 21300000, guid: 9bd56e91c608803428e3a873d762fd6c, type: 3}
