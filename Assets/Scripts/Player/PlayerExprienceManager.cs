@@ -4,7 +4,7 @@ public class PlayerExprienceManager : MonoBehaviour
 {
     public static PlayerExprienceManager Instance;
 
-    private const string PLAYER_PALYED_WAR_COUNT = "PlayerPlayedWarCount";
+    private const string PLAYER_PLAYED_WAR_COUNT_KEY = "PlayerPlayedWarCount";
 
     private void Awake()
     {
@@ -20,14 +20,14 @@ public class PlayerExprienceManager : MonoBehaviour
 
     public void IncreasePlayerPlayedWarCount()
     {
-        int userPlayedWarCount = PlayerPrefs.GetInt(PLAYER_PALYED_WAR_COUNT, 0);
+        int userPlayedWarCount = PlayerPrefs.GetInt(PLAYER_PLAYED_WAR_COUNT_KEY, 0);
         userPlayedWarCount++;
-        PlayerPrefs.SetInt(PLAYER_PALYED_WAR_COUNT, userPlayedWarCount);
+        PlayerPrefs.SetInt(PLAYER_PLAYED_WAR_COUNT_KEY, userPlayedWarCount);
         PlayerPrefs.Save();
     }
 
     public int GetPlayerPlayedWarCount()
     {
-        return PlayerPrefs.GetInt(PLAYER_PALYED_WAR_COUNT, 0);
+        return PlayerPrefs.GetInt(PLAYER_PLAYED_WAR_COUNT_KEY, 0);
     }
 }

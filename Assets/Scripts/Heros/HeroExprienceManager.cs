@@ -18,7 +18,7 @@ public struct HeroExprienceData
 public class HeroExprienceManager : MonoBehaviour
 {
     public static HeroExprienceManager Instance;
-    private const string HERO_EXPRIENCE = "HeroExprience";
+    private const string HERO_EXPRIENCE_KEY = "HeroExprience";
 
     [SerializeField]
     private HerosData herosData;
@@ -60,14 +60,14 @@ public class HeroExprienceManager : MonoBehaviour
     //Hero Exprience
     public void AddHeroExprience(string heroID, int valueForAdd)
     {
-        int heroExprience = PlayerPrefs.GetInt(HERO_EXPRIENCE + heroID, 0);
+        int heroExprience = PlayerPrefs.GetInt(HERO_EXPRIENCE_KEY + heroID, 0);
         heroExprience += valueForAdd;
         PlayerPrefs.SetInt(heroID, heroExprience);
         PlayerPrefs.Save();
     }
     public int GetHeroExprience(string heroID)
     {
-        int heroExprience = PlayerPrefs.GetInt(heroID, 0);
+        int heroExprience = PlayerPrefs.GetInt(HERO_EXPRIENCE_KEY + heroID, 0);
         return heroExprience;
     }
     public int GetHeroMaxExprience(string heroID)
