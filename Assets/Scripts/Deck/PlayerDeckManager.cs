@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +13,7 @@ public class PlayerDeckManager : MonoBehaviour
 
 
     //Config Player First Deck Creating
-    public bool createPlayerFirstDeck = true;
+    public bool createPlayerFirstDeck = false;
     private int deckCardsCount = 3;
     //Dependency
     public HerosData herosData;
@@ -19,8 +21,7 @@ public class PlayerDeckManager : MonoBehaviour
 
     //UI
     [SerializeField]
-    private Image[] deckCardsImage;
-
+    private PlayerDeckCard[] playerDeckCards;
 
 
 
@@ -56,7 +57,11 @@ public class PlayerDeckManager : MonoBehaviour
             string deckCardHeroID = PlayerPrefs.GetString(DECK_CARD_KEY + i, string.Empty);
             if (deckCardHeroID != string.Empty)
             {
-                deckCardsImage[i].sprite = herosData.GetHeroData(deckCardHeroID).image;
+                playerDeckCards[i].LoadDeckCard(herosData.GetHeroData(deckCardHeroID));
+            }else
+            {
+                playerDeckCards[i].LoadDeckCard(null);
+
             }
         }
     }

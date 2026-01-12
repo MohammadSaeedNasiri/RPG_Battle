@@ -29,6 +29,8 @@ public class HeroInformationViewer : MonoBehaviour
     public TextMeshProUGUI heroHealth;
     public Slider heroHealthSlider;
 
+    [Header("Hero Information Popup")]
+    public GameObject heroInfoPopup;
 
     [Header("Using Hero Button")]
     public Button useHeroButton;
@@ -67,6 +69,7 @@ public class HeroInformationViewer : MonoBehaviour
         //Hero Health
         ShowDataOnUI(heroHealth, heroHealthSlider, heroExprienceData.heroHealth, heroExprienceData.heroMaxHealth);
 
+        MenuManager.Instance.OpenMenu(heroInfoPopup);
 
         CheckIsUsableHero(heroData.requiredWarCount);
     }

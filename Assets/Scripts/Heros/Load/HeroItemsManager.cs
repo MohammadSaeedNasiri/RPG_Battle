@@ -6,6 +6,7 @@ public class HeroItemsManager : MonoBehaviour
 
     public void OnSelectedHeroItem(HeroItem selectedHeroItem)
     {
+        if (lastSelectedHeroItem == selectedHeroItem) return;
         if (lastSelectedHeroItem != null)
         {
             lastSelectedHeroItem.DeselectHeroItem();

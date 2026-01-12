@@ -1,11 +1,14 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class HeroItem : MonoBehaviour
+public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 {
     private HeroData heroData;
-
+    [SerializeField]
+    private TextMeshProUGUI heroName;
     [SerializeField]
     private Image heroImage;
     [SerializeField]
@@ -19,9 +22,9 @@ public class HeroItem : MonoBehaviour
         this.heroData = heroData;
         gameObject.name = heroData.id;
         heroImage.sprite = heroData.image;
+        heroName.text = heroData.name;
 
-
-        if(PlayerExprienceManager.Instance.GetPlayerPlayedWarCount() < heroData.requiredWarCount)//Check is unlocked hero?
+        if (PlayerExprienceManager.Instance.GetPlayerPlayedWarCount() < heroData.requiredWarCount)//Check is unlocked hero?
             lockedHero.SetActive(true);
         else
             lockedHero.SetActive(false);
@@ -34,7 +37,6 @@ public class HeroItem : MonoBehaviour
     public void SelectHeroItem()
     {
         haveFocusFrame.SetActive(true);
-        HeroInformationViewer.Instance.ShowHeroInformations(heroData);
         OnSelecedHero?.Invoke(this);
     }
     public void DeselectHeroItem()
@@ -42,4 +44,34 @@ public class HeroItem : MonoBehaviour
         haveFocusFrame.SetActive(false);
     }
 
+
+
+
+    //Click On Hero Item 
+    bool isPointerDown = false;
+    float pointerDownTimer = 0;
+    private void Update()
+    {
+        if (isPointerDown)
+        {
+            pointerDownTimer += Time.deltaTime;
+            if (pointerDownTimer >= 2)
+            {
+                HeroInformationViewer.Instance.ShowHeroInformations(heroData);
+                pointerDownTimer = 0;
+                isPointerDown = false;
+            }
+        }
+    }
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        pointerDownTimer = 0;
+        isPointerDown = false;
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        isPointerDown = true;
+        SelectHeroItem();
+        pointerDownTimer = 0;
+    }
 }
