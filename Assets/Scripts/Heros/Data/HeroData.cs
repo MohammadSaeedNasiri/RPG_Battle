@@ -9,7 +9,7 @@ public class HeroData
     public string name;
     public int baseHealth;
     public int baseAttackPower;
-    public int requiredWarCount;
+    public bool isFree;
     public int maxExprience;
 
     [Header("Hero Sprites")]

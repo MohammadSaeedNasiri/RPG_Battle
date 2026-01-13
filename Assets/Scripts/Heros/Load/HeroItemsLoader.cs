@@ -12,7 +12,7 @@ public class HeroItemsLoader : MonoBehaviour
     public GameObject heroItemsPrefab;
     public Transform heroItemsContainer;
 
-    private List<HeroItem> heroItems;
+    private List<HeroItem> heroItems = new List<HeroItem>();
 
     void Start()
     {

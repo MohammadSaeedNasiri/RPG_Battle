@@ -71,7 +71,7 @@ public class HeroInformationViewer : MonoBehaviour
 
         MenuManager.Instance.OpenMenu(heroInfoPopup);
 
-        CheckIsUsableHero(heroData.requiredWarCount);
+        //CheckIsUsableHero(heroData.requiredWarCount);
     }
 
     private void ShowDataOnUI(TextMeshProUGUI text,Slider slider ,float value,float maxValue)
@@ -82,7 +82,7 @@ public class HeroInformationViewer : MonoBehaviour
     }
 
 
-    private void CheckIsUsableHero(int requiredWarCount)
+ /*   private void CheckIsUsableHero(int requiredWarCount)
     {
         int playerPlayedWarCount = PlayerExprienceManager.Instance.GetPlayerPlayedWarCount();
         if (playerPlayedWarCount >= requiredWarCount)
@@ -93,5 +93,5 @@ public class HeroInformationViewer : MonoBehaviour
         {
             useHeroButton.interactable = false;
         }
-    }
+    }*/
 }

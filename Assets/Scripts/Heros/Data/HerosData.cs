@@ -28,6 +28,11 @@ public class HerosData : ScriptableObject
         return heroData;
     }
 
+    public bool CheckIsHeroFree(string heroID)
+    {
+        return GetHeroData(heroID).isFree;
+    }
+
     
 
 }

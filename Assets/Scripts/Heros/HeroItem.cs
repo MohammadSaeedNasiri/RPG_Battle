@@ -15,24 +15,29 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     private GameObject haveFocusFrame;
     [SerializeField]
     private GameObject lockedHero;
+    [SerializeField]
+    private GameObject selectedHero;
 
     public Action<HeroItem> OnSelecedHero;
     public void LoadHeroItem(HeroData heroData)
     {
         this.heroData = heroData;
-        gameObject.name = heroData.id;
+        gameObject.name = heroData.name;
         heroImage.sprite = heroData.image;
         heroName.text = heroData.name;
 
-        if (PlayerExprienceManager.Instance.GetPlayerPlayedWarCount() < heroData.requiredWarCount)//Check is unlocked hero?
-            lockedHero.SetActive(true);
-        else
+        if (PlayerHerosManager.Instance.CheckPlayerHaveHero(heroData.id))//Check is unlocked hero?
+        {
             lockedHero.SetActive(false);
+            selectedHero.SetActive(PlayerDeckManager.Instance.CheckIsHeroInPlayerDeck(heroData.id));
+        }
+        else
+            lockedHero.SetActive(true);
     }
 
     public void ReloadHeroItem()
     {
-
+        LoadHeroItem(heroData);
     }    
     public void SetOnSelectedHeroEvent(Action<HeroItem> OnSelecedHero)
     {

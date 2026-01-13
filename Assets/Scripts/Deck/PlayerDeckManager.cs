@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerDeckManager : MonoBehaviour
 {
+    public static PlayerDeckManager Instance;
+
     //PlayerPrefs Key
     private const string DECK_CARD_KEY = "DeckCard";
 
@@ -23,7 +20,13 @@ public class PlayerDeckManager : MonoBehaviour
     [SerializeField]
     private PlayerDeckCard[] playerDeckCards;
 
-
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
@@ -74,5 +77,25 @@ public class PlayerDeckManager : MonoBehaviour
     {
         PlayerPrefs.SetString(DECK_CARD_KEY + slotIndex, heroID);
         LoadPlayerDeckCard(slotIndex);
+    }
+    public void ClearPlayerDeckCard(int slotIndex)
+    {
+        PlayerPrefs.SetString(DECK_CARD_KEY + slotIndex, string.Empty);
+        LoadPlayerDeckCard(slotIndex);
+    }
+
+    public bool CheckIsHeroInPlayerDeck(string  heroID)
+    {
+        bool isHeroInPlayerDeck = false;
+        for (int i = 0; i < deckCardsCount; i++)
+        {
+            string deckCardHeroID = PlayerPrefs.GetString(DECK_CARD_KEY + i, string.Empty);
+            if (deckCardHeroID == heroID)
+            {
+                isHeroInPlayerDeck = true; 
+                break;
+            }
+        }
+        return isHeroInPlayerDeck;
     }
 }
