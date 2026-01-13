@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HeroItemsLoader : MonoBehaviour
@@ -10,7 +12,7 @@ public class HeroItemsLoader : MonoBehaviour
     public GameObject heroItemsPrefab;
     public Transform heroItemsContainer;
 
-
+    private List<HeroItem> heroItems;
 
     void Start()
     {
@@ -28,6 +30,15 @@ public class HeroItemsLoader : MonoBehaviour
             HeroItem heroItem = Instantiate(heroItemsPrefab, heroItemsContainer).GetComponent<HeroItem>();//Generate hero item
             heroItem.LoadHeroItem(heroData);
             heroItem.SetOnSelectedHeroEvent(heroItemsManager.OnSelectedHeroItem);
+            heroItems.Add(heroItem);
+        }
+    }
+
+    public void ReloadHerosInUIForPick()//Run With Player Decks Slot Click Button
+    {
+        foreach (var heroItem in heroItems)
+        {
+            heroItem.ReloadHeroItem();
         }
     }
 }

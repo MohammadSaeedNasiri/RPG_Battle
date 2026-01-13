@@ -54,15 +54,25 @@ public class PlayerDeckManager : MonoBehaviour
     {
         for (int i = 0; i < deckCardsCount; i++)
         {
-            string deckCardHeroID = PlayerPrefs.GetString(DECK_CARD_KEY + i, string.Empty);
-            if (deckCardHeroID != string.Empty)
-            {
-                playerDeckCards[i].LoadDeckCard(herosData.GetHeroData(deckCardHeroID));
-            }else
-            {
-                playerDeckCards[i].LoadDeckCard(null);
-
-            }
+            LoadPlayerDeckCard(i);
         }
+    }
+    private void LoadPlayerDeckCard(int slotIndex)
+    {
+        string deckCardHeroID = PlayerPrefs.GetString(DECK_CARD_KEY + slotIndex, string.Empty);
+        if (deckCardHeroID != string.Empty)
+        {
+            playerDeckCards[slotIndex].LoadDeckCard(herosData.GetHeroData(deckCardHeroID));
+        }
+        else
+        {
+            playerDeckCards[slotIndex].LoadDeckCard(null);
+
+        }
+    }
+    public void SetPlayerDeckCard(int slotIndex,string heroID)
+    {
+        PlayerPrefs.SetString(DECK_CARD_KEY + slotIndex, heroID);
+        LoadPlayerDeckCard(slotIndex);
     }
 }

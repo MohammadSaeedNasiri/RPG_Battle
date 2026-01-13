@@ -29,6 +29,11 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
         else
             lockedHero.SetActive(false);
     }
+
+    public void ReloadHeroItem()
+    {
+
+    }    
     public void SetOnSelectedHeroEvent(Action<HeroItem> OnSelecedHero)
     {
         this.OnSelecedHero = OnSelecedHero;
