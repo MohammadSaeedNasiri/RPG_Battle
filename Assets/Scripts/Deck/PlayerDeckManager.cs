@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerDeckManager : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlayerDeckManager : MonoBehaviour
     //UI
     [SerializeField]
     private PlayerDeckCard[] playerDeckCards;
+    [SerializeField]
+    private Image[] playerDeckCardsInLobby;
 
     private void Awake()
     {
@@ -58,6 +61,7 @@ public class PlayerDeckManager : MonoBehaviour
         for (int i = 0; i < deckCardsCount; i++)
         {
             LoadPlayerDeckCard(i);
+            LoadPlayerDeckCardInLobby(i);
         }
     }
     private void LoadPlayerDeckCard(int slotIndex)
@@ -71,6 +75,17 @@ public class PlayerDeckManager : MonoBehaviour
         {
             playerDeckCards[slotIndex].LoadDeckCard(null);
 
+        }
+    }
+    private void LoadPlayerDeckCardInLobby(int slotIndex)
+    {
+
+        string deckCardHeroID = PlayerPrefs.GetString(DECK_CARD_KEY + slotIndex, string.Empty);
+
+        playerDeckCardsInLobby[slotIndex].gameObject.SetActive(deckCardHeroID != string.Empty);
+        if (deckCardHeroID != string.Empty)
+        {
+            playerDeckCardsInLobby[slotIndex].sprite = herosData.GetHeroData(deckCardHeroID).image;
         }
     }
     public void SetPlayerDeckCard(int slotIndex,string heroID)
