@@ -22,6 +22,9 @@ public class PlayerDeckManager : MonoBehaviour
     private PlayerDeckCard[] playerDeckCards;
     [SerializeField]
     private Image[] playerDeckCardsInLobby;
+    [SerializeField]
+    private Button startMatchButton;
+
 
     private void Awake()
     {
@@ -37,6 +40,8 @@ public class PlayerDeckManager : MonoBehaviour
             CreatePlayerFirstDeck();
 
         LoadPlayerDeckCards();
+        CheckIsPlayerDeckReadyForStartMatch();
+
     }
 
 
@@ -74,7 +79,6 @@ public class PlayerDeckManager : MonoBehaviour
         else
         {
             playerDeckCards[slotIndex].LoadDeckCard(null);
-
         }
     }
 
@@ -97,7 +101,8 @@ public class PlayerDeckManager : MonoBehaviour
     public void SetPlayerDeckCard(int slotIndex,string heroID)
     {
         PlayerPrefs.SetString(DECK_CARD_KEY + slotIndex, heroID);
-        LoadPlayerDeckCard(slotIndex);
+        ReloadPlayerDeckCard(slotIndex);
+        OnChangedPlayerDeckCards();
     }
 
 
@@ -106,6 +111,7 @@ public class PlayerDeckManager : MonoBehaviour
     {
         PlayerPrefs.SetString(DECK_CARD_KEY + slotIndex, string.Empty);
         ReloadPlayerDeckCard(slotIndex);
+        OnChangedPlayerDeckCards();
     }
 
     public bool CheckIsHeroInPlayerDeck(string  heroID)
@@ -123,5 +129,23 @@ public class PlayerDeckManager : MonoBehaviour
         return isHeroInPlayerDeck;
     }
 
-  
+    private void OnChangedPlayerDeckCards()
+    {
+        CheckIsPlayerDeckReadyForStartMatch();
+    }
+    private void CheckIsPlayerDeckReadyForStartMatch()
+    {
+        bool isReady = true;
+        for (int slotIndex = 0; slotIndex < deckCardsCount; slotIndex++)
+        {
+            string deckCardHeroID = PlayerPrefs.GetString(DECK_CARD_KEY + slotIndex, string.Empty);
+            if (deckCardHeroID == string.Empty)
+            {
+                isReady = false;
+                break;
+            }
+        }
+        startMatchButton.interactable = isReady;
+
+    }
 }
