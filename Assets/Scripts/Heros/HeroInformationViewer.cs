@@ -32,8 +32,7 @@ public class HeroInformationViewer : MonoBehaviour
     [Header("Hero Information Popup")]
     public GameObject heroInfoPopup;
 
-    [Header("Using Hero Button")]
-    public Button useHeroButton;
+   
 
     private void Awake()
     {

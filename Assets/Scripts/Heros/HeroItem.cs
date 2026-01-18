@@ -19,6 +19,8 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     private GameObject selectedHero;
 
     public Action<HeroItem> OnSelecedHero;
+
+    private bool isSelectableHero = false;
     public void LoadHeroItem(HeroData heroData)
     {
         this.heroData = heroData;
@@ -26,15 +28,32 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
         heroImage.sprite = heroData.image;
         heroName.text = heroData.name;
 
+        CheckIsSelectableHero();
+    }
+
+    private void CheckIsSelectableHero()
+    {
         if (PlayerHerosManager.Instance.CheckPlayerHaveHero(heroData.id))//Check is unlocked hero?
         {
             lockedHero.SetActive(false);
-            selectedHero.SetActive(PlayerDeckManager.Instance.CheckIsHeroInPlayerDeck(heroData.id));
+            if (PlayerDeckManager.Instance.CheckIsHeroInPlayerDeck(heroData.id))
+            {
+                selectedHero.SetActive(true);
+                isSelectableHero = false;
+            }
+            else
+            {
+                selectedHero.SetActive(false);
+                isSelectableHero = true;
+            }
+
         }
         else
+        {
             lockedHero.SetActive(true);
+            isSelectableHero = false;
+        }
     }
-
     public void ReloadHeroItem()
     {
         LoadHeroItem(heroData);
@@ -47,6 +66,7 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     public void SelectHeroItem()
     {
         haveFocusFrame.SetActive(true);
+        CheckIsSelectableHero();
         OnSelecedHero?.Invoke(this);
     }
     public void DeselectHeroItem()
@@ -54,8 +74,13 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
         haveFocusFrame.SetActive(false);
     }
 
+    public bool GetIsSelectableHero()
+    {
+        return isSelectableHero; 
+    }
 
-
+    public HeroData GetHeroItemData()
+        { return heroData; }
 
     //Click On Hero Item 
     bool isPointerDown = false;

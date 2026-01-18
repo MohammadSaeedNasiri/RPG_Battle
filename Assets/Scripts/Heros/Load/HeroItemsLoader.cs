@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HeroItemsLoader : MonoBehaviour
@@ -40,5 +41,6 @@ public class HeroItemsLoader : MonoBehaviour
         {
             heroItem.ReloadHeroItem();
         }
+        heroItems.First().SelectHeroItem();//Select First Hero Item
     }
 }

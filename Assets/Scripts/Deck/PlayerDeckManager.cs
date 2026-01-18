@@ -77,6 +77,12 @@ public class PlayerDeckManager : MonoBehaviour
 
         }
     }
+
+    public void ReloadPlayerDeckCard(int slotIndex)
+    {
+        LoadPlayerDeckCard(slotIndex);
+        LoadPlayerDeckCardInLobby(slotIndex);
+    }
     private void LoadPlayerDeckCardInLobby(int slotIndex)
     {
 
@@ -93,10 +99,13 @@ public class PlayerDeckManager : MonoBehaviour
         PlayerPrefs.SetString(DECK_CARD_KEY + slotIndex, heroID);
         LoadPlayerDeckCard(slotIndex);
     }
-    public void ClearPlayerDeckCard(int slotIndex)
+
+
+
+    public void ClearPlayerDeckCard(int slotIndex)//Delete Hero From Player Deck Card
     {
         PlayerPrefs.SetString(DECK_CARD_KEY + slotIndex, string.Empty);
-        LoadPlayerDeckCard(slotIndex);
+        ReloadPlayerDeckCard(slotIndex);
     }
 
     public bool CheckIsHeroInPlayerDeck(string  heroID)
@@ -113,4 +122,6 @@ public class PlayerDeckManager : MonoBehaviour
         }
         return isHeroInPlayerDeck;
     }
+
+  
 }
