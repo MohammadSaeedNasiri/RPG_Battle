@@ -16,7 +16,7 @@ public class HeroPicker : MonoBehaviour
     {
         selectedSlotIndex = slotIndex;
         MenuManager.Instance.OpenMenu(selectHeroPage);
-        heroItemsLoader.ReloadHerosInUIForPick();
+        heroItemsLoader.ReloadHeroesInUIForPick();
     }
 
     public void UseSelectedHeroForPlayerDeck()
