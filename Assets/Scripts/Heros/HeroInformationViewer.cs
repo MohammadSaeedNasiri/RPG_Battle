@@ -66,16 +66,16 @@ public class HeroInformationViewer : MonoBehaviour
         heroImage.sprite = heroData.image;
 
         //Hero Level
-        ShowDataOnUI(heroLevel, heroLevelSlider, heroExprienceData.heroLevel, heroExprienceData.heroMaxLevel);
+        ShowDataOnUI(heroLevel, heroLevelSlider, heroExprienceData.level, heroExprienceData.maxLevel);
 
         //Hero Exprience
-        ShowDataOnUI(heroExprience, heroExprienceSlider, heroExprienceData.heroExprience, heroExprienceData.heroMaxExprience);
+        ShowDataOnUI(heroExprience, heroExprienceSlider, heroExprienceData.exprience, heroExprienceData.maxExprience);
 
         //Hero Attack Damage
-        ShowDataOnUI(heroAttackPower, heroAttackPowerSlider, heroExprienceData.heroAttackPower, heroExprienceData.heroMaxAttackPower);
+        ShowDataOnUI(heroAttackPower, heroAttackPowerSlider, heroExprienceData.attackPower, heroExprienceData.maxAttackPower);
 
         //Hero Health
-        ShowDataOnUI(heroHealth, heroHealthSlider, heroExprienceData.heroHealth, heroExprienceData.heroMaxHealth);
+        ShowDataOnUI(heroHealth, heroHealthSlider, heroExprienceData.health, heroExprienceData.maxHealth);
 
         menuManager.OpenMenu(heroInfoPopup);
 
