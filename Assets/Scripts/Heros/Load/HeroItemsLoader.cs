@@ -4,9 +4,12 @@ using UnityEngine;
 public class HeroItemsLoader : MonoBehaviour
 {
     //Dependency
-    //public HerosData herosData;
     public HeroesDatabase heroesDatabase;
     public HeroItemsManager heroItemsManager;
+    public PlayerHerosManager playerHerosManager;
+    public PlayerDeckManager playerDeckManager;
+    public HeroInformationViewer heroInformationViewer;
+
 
     //Prefab and Containers
     public GameObject heroItemsPrefab;
@@ -42,6 +45,7 @@ public class HeroItemsLoader : MonoBehaviour
                 return;
             }
             //HeroItem heroItem = heroItemObj.GetComponent<HeroItem>();//Get HeroItem component
+            heroItem.InitDependencies(playerHerosManager, playerDeckManager, heroInformationViewer);
             heroItem.LoadHeroItem(heroData);
             heroItem.SetOnSelectedHeroEvent(heroItemsManager.HandleHeroSelections);
             heroItems.Add(heroItem);

@@ -3319,6 +3319,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroesDatabase: {fileID: 11400000, guid: 709632dc3667e454e86afa082a71f0be, type: 2}
   heroItemsManager: {fileID: 153049423}
+  playerHerosManager: {fileID: 373668502}
+  playerDeckManager: {fileID: 1084267276}
+  heroInformationViewer: {fileID: 3221565}
   heroItemsPrefab: {fileID: 1724684314}
   heroItemsContainer: {fileID: 2013006736}
 --- !u!1 &906418907

@@ -4,23 +4,33 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
+public class HeroItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     private HeroData heroData;
-    [SerializeField]
-    private TextMeshProUGUI heroName;
-    [SerializeField]
-    private Image heroImage;
-    [SerializeField]
-    private GameObject haveFocusFrame;
-    [SerializeField]
-    private GameObject lockedHero;
-    [SerializeField]
-    private GameObject selectedHero;
 
-    public Action<HeroItem> OnSelecedHero;
+    [SerializeField] private TextMeshProUGUI heroName;
+    [SerializeField] private Image heroImage;
+    [SerializeField] private GameObject haveFocusFrame;
+    [SerializeField] private GameObject lockedHero;
+    [SerializeField] private GameObject selectedHero;
+
+
+    public Action<HeroItem> OnSelectedHero;
+
+    //Dependencies
+    private PlayerHerosManager playerHerosManager;
+    private PlayerDeckManager playerDeckManager;
+    private HeroInformationViewer heroInformationViewer;
+
 
     private bool isSelectableHero = false;
+    public void InitDependencies(PlayerHerosManager playerHerosManager, PlayerDeckManager playerDeckManager, HeroInformationViewer heroInformationViewer)
+    {
+        this.playerHerosManager = playerHerosManager;
+        this.playerDeckManager = playerDeckManager;
+        this.heroInformationViewer = heroInformationViewer;
+    }
+
     public void LoadHeroItem(HeroData heroData)
     {
         this.heroData = heroData;
@@ -33,10 +43,10 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 
     private void CheckIsSelectableHero()
     {
-        if (PlayerHerosManager.Instance.CheckPlayerHaveHero(heroData.id))//Check is unlocked hero?
+        if (playerHerosManager.CheckPlayerHaveHero(heroData.id))//Check is unlocked hero?
         {
             lockedHero.SetActive(false);
-            if (PlayerDeckManager.Instance.CheckIsHeroInPlayerDeck(heroData.id))
+            if (playerDeckManager.CheckIsHeroInPlayerDeck(heroData.id))
             {
                 selectedHero.SetActive(true);
                 isSelectableHero = false;
@@ -57,17 +67,17 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     public void ReloadHeroItem()
     {
         LoadHeroItem(heroData);
-    }    
+    }
     public void SetOnSelectedHeroEvent(Action<HeroItem> OnSelecedHero)
     {
-        this.OnSelecedHero = OnSelecedHero;
+        this.OnSelectedHero = OnSelecedHero;
     }
 
     public void SelectHeroItem()
     {
         haveFocusFrame.SetActive(true);
         CheckIsSelectableHero();
-        OnSelecedHero?.Invoke(this);
+        OnSelectedHero?.Invoke(this);
     }
     public void DeselectHeroItem()
     {
@@ -76,11 +86,13 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 
     public bool GetIsSelectableHero()
     {
-        return isSelectableHero; 
+        return isSelectableHero;
     }
 
     public HeroData GetHeroItemData()
-        { return heroData; }
+    {
+        return heroData;
+    }
 
     #region Open hero inforamtion popup
     //Click/Touch On Hero Item 
@@ -93,21 +105,23 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
             pointerDownTimer += Time.deltaTime;//Increase timer
             if (pointerDownTimer >= 2)
             {
-                HeroInformationViewer.Instance.ShowHeroInformations(heroData);//Show information in popup
-                pointerDownTimer = 0;
+                heroInformationViewer.ShowHeroInformations(heroData);//Show information in popup
                 isPointerDown = false;
             }
         }
     }
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (pointerDownTimer < 2)
+        {
+            SelectHeroItem();
+        }
         pointerDownTimer = 0;//Reset timer
         isPointerDown = false;//End
     }
     public void OnPointerDown(PointerEventData eventData)
     {
         isPointerDown = true;//Reset timer
-        SelectHeroItem();
         pointerDownTimer = 0;//Start touch/click
     }
     #endregion
