@@ -50,7 +50,7 @@ public class HeroInformationViewer : MonoBehaviour
         HeroExprienceData heroExprienceData = HeroExprienceManager.Instance.GetHeroAllExprienceData(heroData.id);
 
         //Hero Name
-        heroName.text = heroData.name;
+        heroName.text = heroData.heroName;
 
         //Hero Image
         heroImage.sprite = heroData.image;

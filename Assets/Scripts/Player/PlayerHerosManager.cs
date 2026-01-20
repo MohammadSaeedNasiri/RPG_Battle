@@ -5,7 +5,7 @@ public class PlayerHerosManager : MonoBehaviour
     public static PlayerHerosManager Instance;
     private const string PLAYER_HERO_KEY = "PlayerHero";
     [Header("Heros database")]
-    public HerosData herosData;
+    public HeroesDatabase heroesDatabase;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class PlayerHerosManager : MonoBehaviour
     }
     public bool CheckPlayerHaveHero(string heroID)//Check Player have hero (is Unlocked or is Free)
     {
-        if (PlayerPrefs.GetInt(PLAYER_HERO_KEY + heroID, 0) == 1 || herosData.CheckIsHeroFree(heroID))
+        if (PlayerPrefs.GetInt(PLAYER_HERO_KEY + heroID, 0) == 1 || heroesDatabase.GetHeroUnlockType(heroID) == UnlockType.DefaultUnlocked)
         {
             return true;
         }

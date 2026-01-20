@@ -21,7 +21,7 @@ public class HeroExprienceManager : MonoBehaviour
     private const string HERO_EXPRIENCE_KEY = "HeroExprience";
 
     [SerializeField]
-    private HerosData herosData;
+    private HeroesDatabase heroesDatabase;
 
 
     private void Awake()
@@ -72,7 +72,7 @@ public class HeroExprienceManager : MonoBehaviour
     }
     public int GetHeroMaxExprience(string heroID)
     {
-        int heroMaxExprience = herosData.GetHeroData(heroID).maxExprience;
+        int heroMaxExprience = heroesDatabase.GetHeroDataByID(heroID).maxExprience;
         return heroMaxExprience;
     }
 
@@ -94,14 +94,14 @@ public class HeroExprienceManager : MonoBehaviour
     //Hero Attack Power
     public float GetHeroAttackPower(string heroID)
     {
-        int heroBaseAttackPowerExprience = herosData.GetHeroData(heroID).baseAttackPower;
+        int heroBaseAttackPowerExprience = heroesDatabase.GetHeroDataByID(heroID).baseAttackPower;
         int heroLevel = GetHeroLevel(heroID);
         float heroAttackPower = heroBaseAttackPowerExprience + (heroLevel * (heroBaseAttackPowerExprience * 0.1f)); 
         return heroAttackPower;
     }
     public float GetHeroMaxAttackPower(string heroID)
     {
-        int heroBaseAttackPowerExprience = herosData.GetHeroData(heroID).baseAttackPower;
+        int heroBaseAttackPowerExprience = heroesDatabase.GetHeroDataByID(heroID).baseAttackPower;
         int heroMaxLevel = GetHeroMaxLevel(heroID);
         float heroMaxAttackPower = heroBaseAttackPowerExprience + (heroMaxLevel * (heroBaseAttackPowerExprience * 0.1f));
         return heroMaxAttackPower;
@@ -111,14 +111,14 @@ public class HeroExprienceManager : MonoBehaviour
     //Hero Health
     public float GetHeroHealth(string heroID)
     {
-        int heroBaseHealth = herosData.GetHeroData(heroID).baseHealth;
+        int heroBaseHealth = heroesDatabase.GetHeroDataByID(heroID).baseHealth;
         int heroLevel = GetHeroLevel(heroID);
         float heroHealth = heroBaseHealth + (heroLevel * (heroBaseHealth * 0.1f));
         return heroHealth;
     }
     public float GetHeroMaxHealth(string heroID)
     {
-        int heroBaseHealth = herosData.GetHeroData(heroID).baseHealth;
+        int heroBaseHealth = heroesDatabase.GetHeroDataByID(heroID).baseHealth;
         int heroMaxLevel = GetHeroMaxLevel(heroID);
         float heroMaxHealth = heroBaseHealth + (heroMaxLevel * (heroBaseHealth * 0.1f));
         return heroMaxHealth;

@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e742f16b19a0ffd4fae3e188d68e8381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHerosManager
-  herosData: {fileID: 11400000, guid: 68a4b96bbad7c0b4ab0054ca86626169, type: 2}
+  heroesDatabase: {fileID: 11400000, guid: 709632dc3667e454e86afa082a71f0be, type: 2}
 --- !u!1 &384049780
 GameObject:
   m_ObjectHideFlags: 0
@@ -3317,7 +3317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47c7e877b7f0d5d48ad8458b9a866b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  herosData: {fileID: 11400000, guid: 68a4b96bbad7c0b4ab0054ca86626169, type: 2}
+  heroesDatabase: {fileID: 11400000, guid: 709632dc3667e454e86afa082a71f0be, type: 2}
   heroItemsManager: {fileID: 153049423}
   heroItemsPrefab: {fileID: 1724684314}
   heroItemsContainer: {fileID: 2013006736}
@@ -4259,7 +4259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   createPlayerFirstDeck: 1
   checkIsPlayerDeckReadyForStartMatch: 1
-  herosData: {fileID: 11400000, guid: 68a4b96bbad7c0b4ab0054ca86626169, type: 2}
+  heroesDatabase: {fileID: 11400000, guid: 709632dc3667e454e86afa082a71f0be, type: 2}
   playerDeckCards:
   - {fileID: 981647251}
   - {fileID: 1921727823}
@@ -5549,7 +5549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aafc037274d0b94184e950f215a23e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  herosData: {fileID: 11400000, guid: 68a4b96bbad7c0b4ab0054ca86626169, type: 2}
+  heroesDatabase: {fileID: 11400000, guid: 709632dc3667e454e86afa082a71f0be, type: 2}
 --- !u!1 &1582857096
 GameObject:
   m_ObjectHideFlags: 0

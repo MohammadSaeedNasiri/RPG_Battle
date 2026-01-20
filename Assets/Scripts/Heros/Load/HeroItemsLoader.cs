@@ -6,7 +6,8 @@ using UnityEngine;
 public class HeroItemsLoader : MonoBehaviour
 {
     //Dependency
-    public HerosData herosData;
+    //public HerosData herosData;
+    public HeroesDatabase heroesDatabase;
     public HeroItemsManager heroItemsManager;
 
     //Prefab and Containers
@@ -22,12 +23,13 @@ public class HeroItemsLoader : MonoBehaviour
 
     void LoadHerosInUI()
     {
-        int herosCount = herosData.GetHerosCount();
+        //int herosCount = herosData.GetHerosCount();
+        int herosCount = heroesDatabase.Count;
 
         HeroData heroData;
         for (int i = 0; i < herosCount; i++)
         {
-            heroData = herosData.GetHeroData(i);
+            heroData = heroesDatabase.GetHeroDataByIndex(i);
             HeroItem heroItem = Instantiate(heroItemsPrefab, heroItemsContainer).GetComponent<HeroItem>();//Generate hero item
             heroItem.LoadHeroItem(heroData);
             heroItem.SetOnSelectedHeroEvent(heroItemsManager.OnSelectedHeroItem);

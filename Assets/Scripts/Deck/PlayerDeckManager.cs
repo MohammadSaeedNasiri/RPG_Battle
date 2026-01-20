@@ -23,7 +23,8 @@ public class PlayerDeckManager : MonoBehaviour
 
     //Dependency
     [Header("Heroes database")]
-    public HerosData herosData;
+    //public HerosData herosData;
+    public HeroesDatabase heroesDatabase;
 
 
     //UI
@@ -61,7 +62,7 @@ public class PlayerDeckManager : MonoBehaviour
         {
             for (int i = 0; i < deckCardsCount; i++)//Set 3 free heroes for player deck cards
             {
-                PlayerPrefs.SetString(DECK_CARD_KEY + i, herosData.GetHeroData(i).id);
+                PlayerPrefs.SetString(DECK_CARD_KEY + i, heroesDatabase.GetHeroDataByIndex(i).id);
             }
 
             PlayerPrefs.SetInt("IsCreatedPlayerFirstDeck", 1);
@@ -86,7 +87,7 @@ public class PlayerDeckManager : MonoBehaviour
         string deckCardHeroID = PlayerPrefs.GetString(DECK_CARD_KEY + slotIndex, string.Empty);
         if (deckCardHeroID != string.Empty)
         {
-            playerDeckCards[slotIndex].LoadDeckCard(herosData.GetHeroData(deckCardHeroID));
+            playerDeckCards[slotIndex].LoadDeckCard(heroesDatabase.GetHeroDataByID(deckCardHeroID));
         }
         else
         {
@@ -107,7 +108,7 @@ public class PlayerDeckManager : MonoBehaviour
         playerDeckCardsInLobby[slotIndex].gameObject.SetActive(deckCardHeroID != string.Empty);
         if (deckCardHeroID != string.Empty)
         {
-            playerDeckCardsInLobby[slotIndex].sprite = herosData.GetHeroData(deckCardHeroID).image;
+            playerDeckCardsInLobby[slotIndex].sprite = heroesDatabase.GetHeroDataByID(deckCardHeroID).image;
         }
     }
     #endregion
@@ -176,7 +177,7 @@ public class PlayerDeckManager : MonoBehaviour
             string deckCardHeroID = PlayerPrefs.GetString(DECK_CARD_KEY + slotIndex, string.Empty);
             if (deckCardHeroID != string.Empty)
             {
-                heroDatas.Add(herosData.GetHeroData(deckCardHeroID));
+                heroDatas.Add(heroesDatabase.GetHeroDataByID(deckCardHeroID));
             }
             else
             {

@@ -20,7 +20,7 @@ public class PlayerDeckCard : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         if (heroData != null)
         {
             this.heroData = heroData;
-            if (deckCardName != null)  deckCardName.text = heroData.name;
+            if (deckCardName != null)  deckCardName.text = heroData.heroName;
             if (deckCardImage != null) deckCardImage.sprite = heroData.image;
         }
 

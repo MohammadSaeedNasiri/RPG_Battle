@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HerosData", menuName = "Heros/HerosData")]
 public class HerosData : ScriptableObject
 {
-    [Header("Heros")]
+   /* [Header("Heros")]
     [SerializeField]
     private List<HeroData> herosData;
 
@@ -20,11 +20,6 @@ public class HerosData : ScriptableObject
 
     public HeroData GetHeroData(int heroIndex)//Get all data of hero base on hero index
     {
-        if (heroIndex < 0 || heroIndex >= herosData.Count)
-        {
-            Debug.LogError("Hero index out of range");
-            return null;
-        }
         return herosData[heroIndex];
     }
     public HeroData GetHeroData(string heroID)//Get all data of hero base on hero ID
@@ -37,7 +32,7 @@ public class HerosData : ScriptableObject
     public bool CheckIsHeroFree(string heroID)//Check is hero free to use
     {
         return GetHeroData(heroID).isFree;
-    }
+    }*/
 
     
 

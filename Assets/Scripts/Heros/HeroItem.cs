@@ -24,9 +24,9 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     public void LoadHeroItem(HeroData heroData)
     {
         this.heroData = heroData;
-        gameObject.name = heroData.name;
+        gameObject.name = heroData.heroName;
         heroImage.sprite = heroData.image;
-        heroName.text = heroData.name;
+        heroName.text = heroData.heroName;
 
         CheckIsSelectableHero();
     }
