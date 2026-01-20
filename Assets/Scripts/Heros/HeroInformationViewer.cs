@@ -31,7 +31,9 @@ public class HeroInformationViewer : MonoBehaviour
     [Header("Hero Information Popup")]
     public GameObject heroInfoPopup;//Show hero informations popup menu
 
-   
+    [Header("Injected dependencies")]
+    public HeroExprienceManager heroExprienceManager;
+    public MenuManager menuManager;
 
     private void Awake()
     {
@@ -41,13 +43,21 @@ public class HeroInformationViewer : MonoBehaviour
         }
         else
         {
-            Destroy(Instance);
+            Destroy(gameObject);
         }
+
+        Debug.Assert(heroName != null, "heroName is not assigned");
+        Debug.Assert(heroImage != null, "heroImage is not assigned");
+        Debug.Assert(heroLevel != null && heroLevelSlider != null, "heroLevel UI not assigned");
+        Debug.Assert(heroExprience != null && heroExprienceSlider != null, "heroExprience UI not assigned");
+        Debug.Assert(heroAttackPower != null && heroAttackPowerSlider != null, "heroAttackPower UI not assigned");
+        Debug.Assert(heroHealth != null && heroHealthSlider != null, "heroHealth UI not assigned");
+        Debug.Assert(heroInfoPopup != null, "heroInfoPopup not assigned");
     }
 
     public void ShowHeroInformations(HeroData heroData)
     {
-        HeroExprienceData heroExprienceData = HeroExprienceManager.Instance.GetHeroAllExprienceData(heroData.id);
+        HeroExprienceData heroExprienceData = heroExprienceManager.GetHeroAllExprienceData(heroData.id);
 
         //Hero Name
         heroName.text = heroData.heroName;
@@ -67,7 +77,7 @@ public class HeroInformationViewer : MonoBehaviour
         //Hero Health
         ShowDataOnUI(heroHealth, heroHealthSlider, heroExprienceData.heroHealth, heroExprienceData.heroMaxHealth);
 
-        MenuManager.Instance.OpenMenu(heroInfoPopup);
+        menuManager.OpenMenu(heroInfoPopup);
 
         //CheckIsUsableHero(heroData.requiredWarCount);
     }
