@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This class used for show hero information in popup menu (keep finger on hero for 3 seconds
 public class HeroInformationViewer : MonoBehaviour
 {
     public static HeroInformationViewer Instance;
@@ -30,7 +29,7 @@ public class HeroInformationViewer : MonoBehaviour
     public Slider heroHealthSlider;
 
     [Header("Hero Information Popup")]
-    public GameObject heroInfoPopup;
+    public GameObject heroInfoPopup;//Show hero informations popup menu
 
    
 
@@ -73,7 +72,7 @@ public class HeroInformationViewer : MonoBehaviour
         //CheckIsUsableHero(heroData.requiredWarCount);
     }
 
-    private void ShowDataOnUI(TextMeshProUGUI text,Slider slider ,float value,float maxValue)
+    private void ShowDataOnUI(TextMeshProUGUI text,Slider slider ,float value,float maxValue)//Show hero parameters data
     {
         text.text = value + "/" + maxValue;
         slider.maxValue = maxValue;
@@ -81,16 +80,4 @@ public class HeroInformationViewer : MonoBehaviour
     }
 
 
- /*   private void CheckIsUsableHero(int requiredWarCount)
-    {
-        int playerPlayedWarCount = PlayerExprienceManager.Instance.GetPlayerPlayedWarCount();
-        if (playerPlayedWarCount >= requiredWarCount)
-        {
-            useHeroButton.interactable = true;
-        }
-        else
-        {
-            useHeroButton.interactable = false;
-        }
-    }*/
 }

@@ -82,17 +82,18 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     public HeroData GetHeroItemData()
         { return heroData; }
 
-    //Click On Hero Item 
+    #region Open hero inforamtion popup
+    //Click/Touch On Hero Item 
     bool isPointerDown = false;
-    float pointerDownTimer = 0;
+    float pointerDownTimer = 0; //keep touch on item timer
     private void Update()
     {
         if (isPointerDown)
         {
-            pointerDownTimer += Time.deltaTime;
+            pointerDownTimer += Time.deltaTime;//Increase timer
             if (pointerDownTimer >= 2)
             {
-                HeroInformationViewer.Instance.ShowHeroInformations(heroData);
+                HeroInformationViewer.Instance.ShowHeroInformations(heroData);//Show information in popup
                 pointerDownTimer = 0;
                 isPointerDown = false;
             }
@@ -100,13 +101,14 @@ public class HeroItem : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        pointerDownTimer = 0;
-        isPointerDown = false;
+        pointerDownTimer = 0;//Reset timer
+        isPointerDown = false;//End
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        isPointerDown = true;
+        isPointerDown = true;//Reset timer
         SelectHeroItem();
-        pointerDownTimer = 0;
+        pointerDownTimer = 0;//Start touch/click
     }
+    #endregion
 }
