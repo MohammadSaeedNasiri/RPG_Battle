@@ -17,9 +17,9 @@ public class PlayerDeckManager : MonoBehaviour
     [Header("Create Player First Deck ?")]
     private bool createPlayerFirstDeck = false;
     private int deckCardsCount = 3;
-    [SerializeField]
+
     [Header("Check Is Player Deck Ready?")]
-    private bool checkIsPlayerDeckReadyForStartMatch;
+    [SerializeField] private bool autoCheckDeckReady = true;
 
     //Dependency
     [Header("Heroes database")]
@@ -150,7 +150,7 @@ public class PlayerDeckManager : MonoBehaviour
     }
     private void CheckIsPlayerDeckReadyForStartMatch()//Check is player deck cards ready for start match (player have 3 select heroes?)
     {
-        if (!checkIsPlayerDeckReadyForStartMatch)//Skip Checking
+        if (!autoCheckDeckReady)//Skip Checking
             return;
 
         bool isReady = true;
