@@ -43,7 +43,7 @@ public class HeroItemsLoader : MonoBehaviour
             }
             //HeroItem heroItem = heroItemObj.GetComponent<HeroItem>();//Get HeroItem component
             heroItem.LoadHeroItem(heroData);
-            heroItem.SetOnSelectedHeroEvent(heroItemsManager.OnSelectedHeroItem);
+            heroItem.SetOnSelectedHeroEvent(heroItemsManager.HandleHeroSelections);
             heroItems.Add(heroItem);
         }
     }

@@ -5,8 +5,14 @@ public class HeroItemsManager : MonoBehaviour
 {
     private HeroItem lastSelectedHeroItem;
     [Header("Using Hero Button")]
-    public Button useHeroButton;
-    public void OnSelectedHeroItem(HeroItem selectedHeroItem)
+    [SerializeField] private Button useHeroButton;
+
+    private void Awake()
+    {
+        Debug.Assert(useHeroButton != null, "UseHeroButton is not assigned");
+    }
+
+    public void HandleHeroSelections(HeroItem selectedHeroItem)
     {
         //if (lastSelectedHeroItem == selectedHeroItem) return;
         if (lastSelectedHeroItem != null && lastSelectedHeroItem != selectedHeroItem)
