@@ -4100,7 +4100,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 456184248}
         m_TargetAssemblyTypeName: HeroPicker, Assembly-CSharp
-        m_MethodName: UseSelectedHeroForPlayerDeck
+        m_MethodName: AssignSelectedHeroToDeckSlot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
