@@ -1,10 +1,21 @@
 using UnityEngine;
-
-
-
-public class HeroExprienceManager : MonoBehaviour
+public struct HeroExprienceData
 {
-    public static HeroExprienceManager Instance;
+    public int exprience;
+    public int maxExprience;
+
+    public int level;
+    public int maxLevel;
+
+    public float attackPower;
+    public float maxAttackPower;
+
+    public float health;
+    public float maxHealth;
+}
+public class PlayerExperienceManager : MonoBehaviour
+{
+    public static PlayerExperienceManager Instance;
     private const string HERO_EXPRIENCE_KEY = "HeroExprience";
     private const int EXP_PER_LEVEL = 5;
 
@@ -14,11 +25,12 @@ public class HeroExprienceManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        }else
+        }
+        else
         {
             Destroy(gameObject);
         }
@@ -84,7 +96,7 @@ public class HeroExprienceManager : MonoBehaviour
     {
         int baseAttackPower = heroesDatabase.GetHeroDataByID(heroID).baseAttackPower;
         int level = GetHeroLevel(heroID);
-        float attackPower = baseAttackPower + (level * (baseAttackPower * 0.1f)); 
+        float attackPower = baseAttackPower + (level * (baseAttackPower * 0.1f));
         return attackPower;
     }
     public float GetHeroMaxAttackPower(string heroID)
