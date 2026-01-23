@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private HeroExprienceManager heroExprienceManager;
+
     [Header("Heroes spawn positions")]
     [SerializeField] private Transform[] playerHeroesPositions;
     [SerializeField] private Transform enemyHeroPosition;
@@ -19,10 +22,10 @@ public class Spawner : MonoBehaviour
 
     #region Public API
 
-    public List<GameObject> SpawnPlayerCharacters(List<HeroData> heroesData)
+    public List<Hero> SpawnPlayerHeroes(List<HeroData> heroesData)
     {
-        List<GameObject> spawnedHeroes = new List<GameObject>();
-        ClearCharacters();
+        List<Hero> spawnedHeroes = new List<Hero>();
+       // ClearCharacters();
 
         int spawnCount = Mathf.Min(heroesData.Count, playerHeroesPositions.Length);
 
@@ -33,43 +36,41 @@ public class Spawner : MonoBehaviour
         return spawnedHeroes;
     }
 
-    public GameObject SpawnEnemy(HeroData enemyData)
+    public Hero SpawnEnemyHero(HeroData enemyData)
     {
-       // if (spawnedEnemyView != null)
-          //  Destroy(spawnedEnemyView.gameObject);
+        GameObject heroObj = Instantiate(enemyHeroPrefab, heroesContainer);
+        heroObj.transform.position = enemyHeroPosition.position;
 
-        GameObject enemyObj = Instantiate(enemyHeroPrefab, heroesContainer);
-        enemyObj.transform.position = enemyHeroPosition.position;
+        Hero spawnedHero = heroObj.GetComponent<Hero>();
+        HeroExprienceData heroExprienceData = new HeroExprienceData();
+        if (spawnedHero != null)
+        {
+            heroExprienceData = heroExprienceManager.GetHeroAllExprienceData(enemyData.id);
+            spawnedHero.Initialize(enemyData, heroExprienceData, HeroType.EnemyHero);
+        }
 
-        //spawnedEnemyView = enemyObj.GetComponent<CharacterView>();
-        return enemyObj;
-        //spawnedEnemyView.Initialize(enemyData);
+        return spawnedHero;
+
     }
-
-    /*public List<CharacterView> GetSpawnedHeroes()
-    {
-        return spawnedHeroViews;
-    }*/
-
-   /* public CharacterView GetSpawnedEnemy()
-    {
-        return spawnedEnemyView;
-    }*/
-
     #endregion
 
     #region Private Methods
 
-    private GameObject SpawnSingleHero(HeroData heroData, Transform spawnPoint)
+    private Hero SpawnSingleHero(HeroData heroData, Transform spawnPoint)
     {
         GameObject heroObj = Instantiate(playerHeroPrefab, heroesContainer);
+        heroObj.name = heroData.heroName;
         heroObj.transform.position = spawnPoint.position;
 
-        //CharacterView characterView = heroObj.GetComponent<CharacterView>();
-        //characterView.Initialize(heroData);
-
-        //spawnedHeroViews.Add(characterView);
-        return heroObj;
+        Hero spawnedHero = heroObj.GetComponent<Hero>();
+        HeroExprienceData heroExprienceData = new HeroExprienceData();
+        if (spawnedHero != null)
+        {
+            print(heroData.id);
+            heroExprienceData = heroExprienceManager.GetHeroAllExprienceData(heroData.id);
+            spawnedHero.Initialize(heroData, heroExprienceData, HeroType.PlayerHero);
+        }
+        return spawnedHero;
     }
 
     private void ClearCharacters()
