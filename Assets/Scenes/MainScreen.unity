@@ -4263,7 +4263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   createPlayerFirstDeck: 1
-  checkIsPlayerDeckReadyForStartMatch: 1
+  autoCheckDeckReady: 1
   heroesDatabase: {fileID: 11400000, guid: 709632dc3667e454e86afa082a71f0be, type: 2}
   playerDeckCards:
   - {fileID: 981647251}
@@ -6569,9 +6569,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1842778035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 581b65c3d16116e4caaee5013dc6a0c5, type: 3}
+  m_Script: {fileID: 11500000, guid: e47e713e2f951434dafbb1ee18cf167e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerExperienceManager
+  heroesDatabase: {fileID: 11400000, guid: 709632dc3667e454e86afa082a71f0be, type: 2}
 --- !u!1 &1850463644
 GameObject:
   m_ObjectHideFlags: 0
