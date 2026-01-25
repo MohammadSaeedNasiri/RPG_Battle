@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,9 @@ public class BattleManager : MonoBehaviour
 
     private List<Hero> playerHeroes = new List<Hero>();
     private Hero enemyHero;
+
+   // public static Hero activePlayerHero;
+    public static Hero activeEnemyHero;
     private void Start()
     {
         SetupGame();
@@ -25,22 +29,47 @@ public class BattleManager : MonoBehaviour
 
 
         //Spawn
-        SpawnPlayerHeroes();
-        SpawnEnemyHero(enemyHeroData);
+        playerHeroes = SpawnPlayerHeroes();
+        enemyHero = activeEnemyHero = SpawnEnemyHero(enemyHeroData);
+
+        //Start Game
+        //Enemy
+        enemyHero.GetComponent<EnemyHero>().StartAttack(playerHeroes);
 
 
-        
+
+
     }
+    public static bool isBattleBusy = false;
+    public static bool isPlayerTurn = true;
+    void PlayBattleRound()
+    {
 
-    private void SpawnPlayerHeroes()
+        if (isPlayerTurn)
+        {
+            isBattleBusy = true;
+        }
+        else
+        {
+
+
+            isPlayerTurn = true;
+        }
+        //isPlayerTurn = !isPlayerTurn;
+    }
+    private List<Hero> SpawnPlayerHeroes()
     {
         List<HeroData> playerDeckCards = new List<HeroData>();
+        List<Hero> spawnedHeroes = new List<Hero>();
+
         playerDeckCards = playerDeckManager.GetPlayerDeckCards();
-        playerHeroes = spawner.SpawnPlayerHeroes(playerDeckCards);
+        spawnedHeroes = spawner.SpawnPlayerHeroes(playerDeckCards);
+
+        return spawnedHeroes;
     }
 
-    private void SpawnEnemyHero(HeroData heroData)
+    private Hero SpawnEnemyHero(HeroData heroData)
     {
-        enemyHero = spawner.SpawnEnemyHero(heroData);
+        return spawner.SpawnEnemyHero(heroData);
     }
 }

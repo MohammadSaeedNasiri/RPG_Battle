@@ -66,7 +66,6 @@ public class Spawner : MonoBehaviour
         HeroExprienceData heroExprienceData = new HeroExprienceData();
         if (spawnedHero != null)
         {
-            print(heroData.id);
             heroExprienceData = heroExprienceManager.GetHeroAllExprienceData(heroData.id);
             spawnedHero.Initialize(heroData, heroExprienceData, HeroType.PlayerHero);
         }
