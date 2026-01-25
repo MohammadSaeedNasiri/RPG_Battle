@@ -27,7 +27,7 @@ public class Hero : MonoBehaviour
     private HeroRuntimeData heroRuntimeData;
     [SerializeField] private HeroUI heroUI;
     [SerializeField] protected HeroMoveToTarget heroMoveToTarget;
-    protected Hero targetHero;
+    [SerializeField] protected Hero targetHero;
 
     public HeroRuntimeData GetHeroRuntimeData()
     {
@@ -44,17 +44,26 @@ public class Hero : MonoBehaviour
 
 
    
-    public void TakeDamage()
+    public void TakeDamage(float damageValue)
     {
+        heroRuntimeData.heroExprienceData.health -= damageValue;
+        if(heroRuntimeData.heroExprienceData.health < 0)
+        {
+            heroRuntimeData.heroExprienceData.health = 0;
+            Die();
+        }
 
+        heroUI.Damage(heroRuntimeData, damageValue);//Show in UI
     }
     public void DealDamage()
     {
-
+        targetHero.TakeDamage(heroRuntimeData.heroExprienceData.attackPower);
     }
 
     public void Die()
     {
+        heroRuntimeData.isAlive = false;
+        print("Is Deaded");
 
     }
 }

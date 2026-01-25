@@ -3,6 +3,8 @@ using System.Collections;
 
 public class HeroMoveToTarget : MonoBehaviour
 {
+    [SerializeField] Hero hero;
+
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float attackDistance = 1.2f;
 
@@ -62,6 +64,7 @@ public class HeroMoveToTarget : MonoBehaviour
 
     private void Attack()
     {
+        hero.DealDamage();
         Debug.Log("Attack executed!");
         // اینجا می‌تونی انیمیشن یا دمیج رو اجرا کنی
     }

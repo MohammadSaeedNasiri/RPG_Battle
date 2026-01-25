@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
+
+    public static BattleManager Instance;
     [SerializeField] private HeroesDatabase heroesDatabase;
 
     [SerializeField]private PlayerDeckManager playerDeckManager;
@@ -11,10 +13,22 @@ public class BattleManager : MonoBehaviour
 
 
     private List<Hero> playerHeroes = new List<Hero>();
-    private Hero enemyHero;
+    public Hero enemyHero;
 
    // public static Hero activePlayerHero;
-    public static Hero activeEnemyHero;
+    //public Hero activeEnemyHero;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    } 
     private void Start()
     {
         SetupGame();
@@ -30,32 +44,34 @@ public class BattleManager : MonoBehaviour
 
         //Spawn
         playerHeroes = SpawnPlayerHeroes();
-        enemyHero = activeEnemyHero = SpawnEnemyHero(enemyHeroData);
+        enemyHero = SpawnEnemyHero(enemyHeroData);
 
         //Start Game
         //Enemy
-        enemyHero.GetComponent<EnemyHero>().StartAttack(playerHeroes);
 
 
 
 
     }
-    public static bool isBattleBusy = false;
-    public static bool isPlayerTurn = true;
-    void PlayBattleRound()
-    {
+    public bool isBattleBusy = false;
+    public bool isPlayerTurn = true;
 
+    public void OnAttackComplete()
+    {
+        //Check State
+        PrepareNextBattleRound();
+    }
+    private void PrepareNextBattleRound()
+    {
         if (isPlayerTurn)
         {
             isBattleBusy = true;
         }
         else
         {
-
-
+            enemyHero.GetComponent<EnemyHero>().StartAttack(playerHeroes);
             isPlayerTurn = true;
         }
-        //isPlayerTurn = !isPlayerTurn;
     }
     private List<Hero> SpawnPlayerHeroes()
     {

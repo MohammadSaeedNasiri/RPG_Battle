@@ -40,16 +40,17 @@ public class PlayerHero : Hero
 
     private void OnClicked()
     {
-        if (BattleManager.isPlayerTurn)
-        {
-            BattleManager.isPlayerTurn = false;
-            BattleManager.isBattleBusy = true;
-            heroMoveToTarget.SetTarget(BattleManager.activeEnemyHero.transform);
-
-        }else
+        if (!BattleManager.Instance.isPlayerTurn || BattleManager.Instance.isBattleBusy)
         {
             Debug.Log("NOT player turn!!!");
+            return;
         }
-        
+
+
+        BattleManager.Instance.isPlayerTurn = false;
+        BattleManager.Instance.isBattleBusy = true;
+        targetHero = BattleManager.Instance.enemyHero;
+        heroMoveToTarget.SetTarget(targetHero.transform);
+
     }
 }
