@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
@@ -10,6 +11,9 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField]private PlayerDeckManager playerDeckManager;
     [SerializeField] private Spawner spawner;
+
+
+    [SerializeField] private TextMeshProUGUI turnInformationText;
 
 
     private List<Hero> playerHeroes = new List<Hero>();
@@ -58,17 +62,24 @@ public class BattleManager : MonoBehaviour
 
     public void OnAttackComplete()
     {
+        isBattleBusy = false;
+
+        print("Next");
         //Check State
         PrepareNextBattleRound();
+        
     }
     private void PrepareNextBattleRound()
     {
         if (isPlayerTurn)
         {
-            isBattleBusy = true;
+            turnInformationText.text = "Your turn, choose a hero.";
         }
         else
         {
+            isBattleBusy = true;
+            turnInformationText.text = "Enemy's turn, please wait.";
+
             enemyHero.GetComponent<EnemyHero>().StartAttack(playerHeroes);
             isPlayerTurn = true;
         }

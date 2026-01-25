@@ -46,6 +46,8 @@ public class PlayerHero : Hero
             return;
         }
 
+        if (!heroRuntimeData.isAlive) return;
+
 
         BattleManager.Instance.isPlayerTurn = false;
         BattleManager.Instance.isBattleBusy = true;

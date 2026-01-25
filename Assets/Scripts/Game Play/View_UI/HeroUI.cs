@@ -25,6 +25,15 @@ public class HeroUI : MonoBehaviour
     {
         UpdateUI(hr);
         ShowDamageAnim(damageValue);
+
+        if (hr.heroExprienceData.health > 0)
+        {
+            StartCoroutine(PopCoroutine(1.1f, 0.2f));
+        }
+        else
+        {
+            ShowDieAnim();
+        }
     }
 
 
@@ -37,13 +46,13 @@ public class HeroUI : MonoBehaviour
     private void ShowDamageAnim(float damageValue)
     {
         damageAnimatedText.text = damageValue.ToString();
+        // damageAnimatedText.gameObject.SetActive(true);
         StartCoroutine(PlayAnimationCoroutine(damageAnimatedText.GetComponent<Animator>()));
-       // damageAnimatedText.gameObject.SetActive(true);
+
     }
     private IEnumerator PlayAnimationCoroutine(Animator animator)
     {
         animator.SetBool("Play", true);
-        StartCoroutine(PopCoroutine(1.1f, 0.2f));
 
         yield return new WaitForSeconds(0.02f);
         
@@ -66,9 +75,10 @@ public class HeroUI : MonoBehaviour
         heroImage.color = Color.white;
         transform.localScale = original;
     }
-    public void ShowDieAnim()
+    private void ShowDieAnim()
     {
         heroImage.color = Color.gray;
-
+        nameText.gameObject.SetActive(false);
+        healthSlider.gameObject.SetActive(false);
     }
 }

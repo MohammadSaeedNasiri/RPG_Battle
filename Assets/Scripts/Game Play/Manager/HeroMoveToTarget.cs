@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HeroMoveToTarget : MonoBehaviour
 {
-    [SerializeField] Hero hero;
+    [SerializeField] HeroAttack heroAttack;
 
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float attackDistance = 1.2f;
@@ -39,8 +39,8 @@ public class HeroMoveToTarget : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         // 3️⃣ ضربه
-        Attack();
-
+        
+        heroAttack.Attack();
         // 4️⃣ صبر 1 ثانیه بعد از ضربه
         yield return new WaitForSeconds(1f);
 
@@ -54,6 +54,9 @@ public class HeroMoveToTarget : MonoBehaviour
 
         transform.position = startPosition;
         spriteRenderer.flipX = !spriteRenderer.flipX; // بازگرداندن Sprite
+
+        yield return new WaitForSeconds(2f);
+        BattleManager.Instance.OnAttackComplete();
     }
 
     private void MoveTowards(Vector3 destination)
@@ -62,10 +65,5 @@ public class HeroMoveToTarget : MonoBehaviour
         transform.position += direction * moveSpeed * Time.deltaTime;
     }
 
-    private void Attack()
-    {
-        hero.DealDamage();
-        Debug.Log("Attack executed!");
-        // اینجا می‌تونی انیمیشن یا دمیج رو اجرا کنی
-    }
+   
 }

@@ -24,7 +24,7 @@ public struct HeroRuntimeData
 }
 public class Hero : MonoBehaviour
 {
-    private HeroRuntimeData heroRuntimeData;
+    protected HeroRuntimeData heroRuntimeData;
     [SerializeField] private HeroUI heroUI;
     [SerializeField] protected HeroMoveToTarget heroMoveToTarget;
     [SerializeField] protected Hero targetHero;
