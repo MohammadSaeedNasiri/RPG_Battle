@@ -66,4 +66,9 @@ public class Hero : MonoBehaviour
         print("Is Deaded");
 
     }
+
+    public bool GetIsAlive()
+    {
+        return heroRuntimeData.isAlive;
+    }
 }

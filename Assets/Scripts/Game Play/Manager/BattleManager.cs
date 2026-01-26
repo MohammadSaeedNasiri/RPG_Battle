@@ -1,7 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+[Serializable]
+public enum GameState
+{
+    Playing,
+    Paused,
+    GameOver,
+    Win
+}
+
 
 public class BattleManager : MonoBehaviour
 {
@@ -9,7 +19,7 @@ public class BattleManager : MonoBehaviour
     public static BattleManager Instance;
     [SerializeField] private HeroesDatabase heroesDatabase;
 
-    [SerializeField]private PlayerDeckManager playerDeckManager;
+    [SerializeField] private PlayerDeckManager playerDeckManager;
     [SerializeField] private Spawner spawner;
 
 
@@ -18,8 +28,10 @@ public class BattleManager : MonoBehaviour
 
     private List<Hero> playerHeroes = new List<Hero>();
     public Hero enemyHero;
+    GameState gameState;
 
-   // public static Hero activePlayerHero;
+    public static event System.Action<GameState> OnBattleEnded;
+    // public static Hero activePlayerHero;
     //public Hero activeEnemyHero;
 
     private void Awake()
@@ -32,7 +44,7 @@ public class BattleManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    } 
+    }
     private void Start()
     {
         SetupGame();
@@ -50,11 +62,7 @@ public class BattleManager : MonoBehaviour
         playerHeroes = SpawnPlayerHeroes();
         enemyHero = SpawnEnemyHero(enemyHeroData);
 
-        //Start Game
-        //Enemy
-
-
-
+        gameState = GameState.Playing;
 
     }
     public bool isBattleBusy = false;
@@ -63,11 +71,19 @@ public class BattleManager : MonoBehaviour
     public void OnAttackComplete()
     {
         isBattleBusy = false;
+        gameState = UpdateGameState();
 
-        print("Next");
         //Check State
-        PrepareNextBattleRound();
-        
+        if (gameState == GameState.Playing)
+        {
+            PrepareNextBattleRound();
+        }
+        else
+        {
+            OnBattleEnded?.Invoke(gameState);
+        }
+
+
     }
     private void PrepareNextBattleRound()
     {
@@ -84,6 +100,28 @@ public class BattleManager : MonoBehaviour
             isPlayerTurn = true;
         }
     }
+
+    private GameState UpdateGameState()
+    {
+        // If the enemy is dead >> player wins
+        if (!enemyHero.GetIsAlive())
+        {
+            return GameState.Win;
+        }
+
+        // Check if at least one player hero is alive
+        foreach (Hero playerHero in playerHeroes)
+        {
+            if (playerHero.GetIsAlive())
+            {
+                return GameState.Playing;
+            }
+        }
+
+        // If no player heroes are alive >> game over
+        return GameState.GameOver;
+    }
+
     private List<Hero> SpawnPlayerHeroes()
     {
         List<HeroData> playerDeckCards = new List<HeroData>();
@@ -98,5 +136,10 @@ public class BattleManager : MonoBehaviour
     private Hero SpawnEnemyHero(HeroData heroData)
     {
         return spawner.SpawnEnemyHero(heroData);
+    }
+
+    private void EndGame()
+    {
+
     }
 }
