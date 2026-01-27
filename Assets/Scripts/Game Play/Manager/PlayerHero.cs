@@ -42,7 +42,7 @@ public class PlayerHero : Hero
 
     private void OnClicked()
     {
-        if (!BattleManager.Instance.isPlayerTurn || BattleManager.Instance.isBattleBusy)
+        if (!BattleManager.Instance.isPlayerTurn || BattleManager.Instance.GetBattleBusy())
         {
             Debug.Log("NOT player turn!!!");
             return;
@@ -52,7 +52,7 @@ public class PlayerHero : Hero
 
 
         BattleManager.Instance.isPlayerTurn = false;
-        BattleManager.Instance.isBattleBusy = true;
+        BattleManager.Instance.SetBattleBusy(true);
         targetHero = BattleManager.Instance.enemyHero;
         heroMoveToTarget.SetTarget(targetHero.transform);
 

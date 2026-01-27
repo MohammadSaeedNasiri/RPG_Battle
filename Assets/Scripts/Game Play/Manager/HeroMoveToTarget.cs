@@ -4,6 +4,7 @@ using System.Collections;
 public class HeroMoveToTarget : MonoBehaviour
 {
     [SerializeField] HeroAttack heroAttack;
+   // [SerializeField] private GameUIManager gameUIManager;
 
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float attackDistance = 1.2f;
@@ -28,6 +29,7 @@ public class HeroMoveToTarget : MonoBehaviour
 
     private IEnumerator MoveAndAttackRoutine()
     {
+
         // 1️⃣ حرکت به سمت هدف
         while (Vector2.Distance(transform.position, target.position) > attackDistance)
         {
@@ -55,7 +57,9 @@ public class HeroMoveToTarget : MonoBehaviour
         transform.position = startPosition;
         spriteRenderer.flipX = !spriteRenderer.flipX; // بازگرداندن Sprite
 
-        yield return new WaitForSeconds(2f);
+        if(!BattleManager.Instance.isPlayerTurn)
+            yield return new WaitForSeconds(2f);
+
         BattleManager.Instance.OnAttackComplete();
     }
 

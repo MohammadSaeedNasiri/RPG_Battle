@@ -20,6 +20,10 @@ public class GameUIManager : MonoBehaviour
     [Header("UI Panels (Unlock new hero)")]
     [SerializeField] private GameObject unlockedNewHeroPanel;
     [SerializeField] private Image newHeroImage;
+
+    [Header("UI Panels (Waiting)")]
+    [SerializeField] private GameObject waiting;
+
     public void ShowWin()
     {
         if (winPanel != null)
@@ -73,4 +77,14 @@ public class GameUIManager : MonoBehaviour
 
     }
 
+
+
+    public void ShowWaiting()
+    {
+        waiting.SetActive(true);
+    }
+    public void HideWaiting()
+    {
+        waiting.SetActive(false);
+    }
 }

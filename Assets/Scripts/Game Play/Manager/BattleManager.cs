@@ -18,6 +18,7 @@ public class BattleManager : MonoBehaviour
 
     public static BattleManager Instance;
     [SerializeField] private HeroesDatabase heroesDatabase;
+    [SerializeField] private GameUIManager gameUIManager;
 
     [SerializeField] private PlayerDeckManager playerDeckManager;
     [SerializeField] private Spawner spawner;
@@ -31,8 +32,7 @@ public class BattleManager : MonoBehaviour
     GameState gameState;
 
     public static event Action<GameState> OnBattleEnded;
-    // public static Hero activePlayerHero;
-    //public Hero activeEnemyHero;
+
 
     private void Awake()
     {
@@ -65,12 +65,28 @@ public class BattleManager : MonoBehaviour
         gameState = GameState.Playing;
 
     }
-    public bool isBattleBusy = false;
+    private bool isBattleBusy = false;
     public bool isPlayerTurn = true;
+
+    public bool GetBattleBusy()
+    { 
+        return isBattleBusy;
+    }
+
+    public void SetBattleBusy(bool state)
+    {
+        isBattleBusy = state;
+        if (isBattleBusy)
+            gameUIManager.ShowWaiting();
+        else
+            gameUIManager.HideWaiting();
+
+        turnInformationText.gameObject.SetActive(!state);
+    }
 
     public void OnAttackComplete()
     {
-        isBattleBusy = false;
+        SetBattleBusy(false);
         gameState = UpdateGameState();
 
         //Check State
@@ -93,7 +109,7 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-            isBattleBusy = true;
+            SetBattleBusy(true);
             turnInformationText.text = "Enemy's turn, please wait.";
 
             enemyHero.GetComponent<EnemyHero>().StartAttack(playerHeroes);
