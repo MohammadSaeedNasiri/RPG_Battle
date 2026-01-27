@@ -16,8 +16,10 @@ public class PlayerExperienceManager : MonoBehaviour
         exprience += valueForAdd;
         PlayerPrefs.SetInt(PLAYER_EXPRIENCE_KEY, exprience);
         PlayerPrefs.Save();
+
+        Debug.Log("New player exp :" + exprience);
     }
-    public int GetPlayerExprience(string heroID)
+    public int GetPlayerExprience()
     {
         int exprience = PlayerPrefs.GetInt(PLAYER_EXPRIENCE_KEY, 0);
         return exprience;

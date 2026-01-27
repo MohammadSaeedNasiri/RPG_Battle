@@ -16,6 +16,10 @@ public class GameUIManager : MonoBehaviour
     [Header("UI Panels (Lose)")]
     [SerializeField] private GameObject losePanel;
 
+
+    [Header("UI Panels (Unlock new hero)")]
+    [SerializeField] private GameObject unlockedNewHeroPanel;
+    [SerializeField] private Image newHeroImage;
     public void ShowWin()
     {
         if (winPanel != null)
@@ -39,13 +43,15 @@ public class GameUIManager : MonoBehaviour
         }
         else
         {
-            if (increaseExprienceValue == 0)
+            if (increaseExprienceValue == 0 && heroRuntimeData.isAlive)
             {
                 heroesExpText[heroIndex].text = "MAX";
             }
             else
             {
                 heroesImage[heroIndex].color = Color.gray;
+                heroesExpText[heroIndex].text = "Dead";
+
             }
         }
     }
@@ -55,6 +61,16 @@ public class GameUIManager : MonoBehaviour
     {
         if (losePanel != null)
             MenuManager.Instance.OpenMenu(losePanel);
+    }
+
+    public void ShowNewHeroUnlocked(HeroData unlockedHeroData)
+    {
+        if (unlockedNewHeroPanel != null)
+            MenuManager.Instance.OpenMenu(unlockedNewHeroPanel);
+
+        if (newHeroImage != null)
+            newHeroImage.sprite = unlockedHeroData.image;
+
     }
 
 }

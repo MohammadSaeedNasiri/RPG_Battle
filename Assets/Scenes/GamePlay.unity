@@ -727,6 +727,8 @@ MonoBehaviour:
   - {fileID: 1551988468}
   - {fileID: 163719557}
   losePanel: {fileID: 1828221403}
+  unlockedNewHeroPanel: {fileID: 630134014}
+  newHeroImage: {fileID: 1228979571}
 --- !u!1 &104668140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,7 +2158,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 208547003}
-  - component: {fileID: 208547002}
   m_Layer: 5
   m_Name: Pause panel
   m_TagString: Untagged
@@ -2164,20 +2165,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &208547002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208547001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cf42140c3104393ba145bec6abebb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  otherPanels:
-  - {fileID: 0}
 --- !u!224 &208547003
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4211,9 +4198,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 630134015}
-  - component: {fileID: 630134016}
   m_Layer: 5
-  m_Name: Unlock Hero panel
+  m_Name: Unlocked New Hero panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4241,20 +4227,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &630134016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630134014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cf42140c3104393ba145bec6abebb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  otherPanels:
-  - {fileID: 0}
 --- !u!1 &633207500
 GameObject:
   m_ObjectHideFlags: 0
@@ -6020,7 +5992,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 950005296}
-  - component: {fileID: 950005297}
   m_Layer: 5
   m_Name: Win panel
   m_TagString: Untagged
@@ -6050,20 +6021,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &950005297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950005295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cf42140c3104393ba145bec6abebb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  otherPanels:
-  - {fileID: 0}
 --- !u!1 &960504606
 GameObject:
   m_ObjectHideFlags: 0
@@ -6893,6 +6850,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 031ecdb16bfb34b4295cbf43d4084bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RewardManager
+  heroesDatabase: {fileID: 11400000, guid: 709632dc3667e454e86afa082a71f0be, type: 2}
+  playerHerosManager: {fileID: 373668502}
   playerExperienceManager: {fileID: 1842778037}
   heroExperienceManager: {fileID: 1425404909}
   gameUIManager: {fileID: 88350323}
@@ -10629,7 +10588,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1828221404}
-  - component: {fileID: 1828221405}
   m_Layer: 5
   m_Name: Lose panel
   m_TagString: Untagged
@@ -10659,20 +10617,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1828221405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828221403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99cf42140c3104393ba145bec6abebb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  otherPanels:
-  - {fileID: 0}
 --- !u!1 &1838672005
 GameObject:
   m_ObjectHideFlags: 0

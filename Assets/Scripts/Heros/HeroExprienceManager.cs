@@ -98,14 +98,14 @@ public class HeroExprienceManager : MonoBehaviour
         int baseAttackPower = heroesDatabase.GetHeroDataByID(heroID).baseAttackPower;
         int level = GetHeroLevel(heroID);
         float attackPower = baseAttackPower + (level * (baseAttackPower * 0.1f)); 
-        return attackPower;
+        return (int)attackPower;
     }
     public float GetHeroMaxAttackPower(string heroID)
     {
         int baseAttackPower = heroesDatabase.GetHeroDataByID(heroID).baseAttackPower;
         int maxLevel = GetHeroMaxLevel(heroID);
         float maxAttackPower = baseAttackPower + (maxLevel * (baseAttackPower * 0.1f));
-        return maxAttackPower;
+        return (int)maxAttackPower;
     }
 
 
@@ -115,13 +115,13 @@ public class HeroExprienceManager : MonoBehaviour
         int baseHealth = heroesDatabase.GetHeroDataByID(heroID).baseHealth;
         int level = GetHeroLevel(heroID);
         float health = baseHealth + (level * (baseHealth * 0.1f));
-        return health;
+        return (int)health;
     }
     public float GetHeroMaxHealth(string heroID)
     {
         int baseHealth = heroesDatabase.GetHeroDataByID(heroID).baseHealth;
         int maxLevel = GetHeroMaxLevel(heroID);
         float maxHealth = baseHealth + (maxLevel * (baseHealth * 0.1f));
-        return maxHealth;
+        return (int)maxHealth;
     }
 }

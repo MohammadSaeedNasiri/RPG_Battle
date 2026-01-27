@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerHerosManager : MonoBehaviour
@@ -37,5 +39,27 @@ public class PlayerHerosManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(PLAYER_HERO_KEY + heroID, 1);
         PlayerPrefs.Save();
+    }
+
+    public List<HeroData> GetUnlockedHeroes()//NO FREE HEROES!!!
+    {
+        List<HeroData> unlockedHeros = new List<HeroData>();
+        foreach (HeroData heroData in heroesDatabase.GetAll())
+        {
+            if (CheckPlayerHaveHero(heroData.id) && heroData.unlockType == UnlockType.ProgressBased)
+                unlockedHeros.Add(heroData);
+        }
+        return unlockedHeros;
+    }
+
+    public List<HeroData> GetLockedHeroes()
+    {
+        List<HeroData> lockedHeros = new List<HeroData>();
+        foreach (HeroData heroData in heroesDatabase.GetAll())
+        {
+            if (!CheckPlayerHaveHero(heroData.id))
+                lockedHeros.Add(heroData);
+        }
+        return lockedHeros;
     }
 }
