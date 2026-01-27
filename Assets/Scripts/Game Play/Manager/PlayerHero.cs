@@ -21,7 +21,7 @@ public class PlayerHero : Hero
             OnClicked();
         }
 
-        isHolding = false;
+            isHolding = false;
     }
 
     private void Update()
@@ -34,6 +34,8 @@ public class PlayerHero : Hero
         if (holdTime >= 2f)
         {
             openInformationPopup = true;
+            HeroInformationViewer.Instance.ShowHeroInformations(heroRuntimeData.heroData);
+
         }
     }
 

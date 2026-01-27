@@ -174,7 +174,7 @@ MonoBehaviour:
   heroHealth: {fileID: 1724017553}
   heroHealthSlider: {fileID: 1873261762}
   heroInfoPopup: {fileID: 87101133}
-  heroExprienceManager: {fileID: 0}
+  heroExprienceManager: {fileID: 1425404909}
   menuManager: {fileID: 1035329954}
 --- !u!1 &6617069
 GameObject:
