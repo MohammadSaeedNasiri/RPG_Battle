@@ -30,7 +30,7 @@ public class BattleManager : MonoBehaviour
     public Hero enemyHero;
     GameState gameState;
 
-    public static event System.Action<GameState> OnBattleEnded;
+    public static event Action<GameState> OnBattleEnded;
     // public static Hero activePlayerHero;
     //public Hero activeEnemyHero;
 
@@ -55,7 +55,7 @@ public class BattleManager : MonoBehaviour
     {
         //Enemy Hero Data (static for test)
         HeroData enemyHeroData = new HeroData();
-        enemyHeroData = heroesDatabase.GetHeroDataByIndex(2);
+        enemyHeroData = heroesDatabase.GetEnemyHeroDataByIndex(2);
 
 
         //Spawn
@@ -138,8 +138,8 @@ public class BattleManager : MonoBehaviour
         return spawner.SpawnEnemyHero(heroData);
     }
 
-    private void EndGame()
+    public List<Hero> GetPlayerHeroes()
     {
-
+        return playerHeroes; 
     }
 }

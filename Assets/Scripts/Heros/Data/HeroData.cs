@@ -20,4 +20,11 @@ public class HeroData
 
     [Header("Hero Sprites")]
     public Sprite image;//Hero image for show in UI
+
+    public Sprite GetHeroImage()
+        { return image; }
+    public string GetID()
+    {
+        return id;
+    }
 }

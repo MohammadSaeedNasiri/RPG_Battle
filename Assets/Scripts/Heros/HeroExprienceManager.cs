@@ -1,12 +1,25 @@
 using UnityEngine;
 
 
+public struct HeroExprienceData
+{
+    public int exprience;
+    public int maxExprience;
 
+    public int level;
+    public int maxLevel;
+
+    public float attackPower;
+    public float maxAttackPower;
+
+    public float health;
+    public float maxHealth;
+}
 public class HeroExprienceManager : MonoBehaviour
 {
     public static HeroExprienceManager Instance;
     private const string HERO_EXPRIENCE_KEY = "HeroExprience";
-    private const int EXP_PER_LEVEL = 5;
+
 
     [SerializeField]
     private HeroesDatabase heroesDatabase;
@@ -69,13 +82,13 @@ public class HeroExprienceManager : MonoBehaviour
     public int GetHeroLevel(string heroID)
     {
         int exprience = GetHeroExprience(heroID);
-        int level = exprience / EXP_PER_LEVEL;
+        int level = exprience / RewardManager.HERO_EXP_PER_WIN;
         return level;
     }
     public int GetHeroMaxLevel(string heroID)
     {
         int exprience = GetHeroMaxExprience(heroID);
-        int maxLevel = exprience / EXP_PER_LEVEL;
+        int maxLevel = exprience / RewardManager.HERO_EXP_PER_WIN;
         return maxLevel;
     }
 

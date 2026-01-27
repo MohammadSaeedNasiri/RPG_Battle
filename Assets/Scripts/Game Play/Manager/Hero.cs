@@ -71,4 +71,5 @@ public class Hero : MonoBehaviour
     {
         return heroRuntimeData.isAlive;
     }
+    
 }

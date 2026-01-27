@@ -311,7 +311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: START
+  m_text: BATTLE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
   m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
@@ -920,7 +920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265571809}
   m_Layer: 0
-  m_Name: ' Heros (Select Hero Page)'
+  m_Name: ' Heros Panel (Select Hero Page)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2025,7 +2025,7 @@ GameObject:
   - component: {fileID: 550364319}
   - component: {fileID: 550364318}
   m_Layer: 5
-  m_Name: Start Match (Button)
+  m_Name: Start Battle (Button)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2094,7 +2094,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 550364319}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1035329954}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &550364319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3245,7 +3257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886681903}
   m_Layer: 0
-  m_Name: Lobby
+  m_Name: 'Lobby '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4212,12 +4224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4b5fde4689b154da4001b59f91f198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitScreen: {fileID: 0}
-  pauseScreen: {fileID: 0}
-  startGameScreen: {fileID: 0}
-  gameoverScreen: {fileID: 0}
-  winScreen: {fileID: 0}
-  rewardScreen: {fileID: 0}
+  deckPanel: {fileID: 1153816570}
+  exitPanel: {fileID: 0}
+  pausePanel: {fileID: 0}
+  losePanel: {fileID: 0}
+  winPanel: {fileID: 0}
 --- !u!1 &1084267274
 GameObject:
   m_ObjectHideFlags: 0
@@ -4273,7 +4284,7 @@ MonoBehaviour:
   - {fileID: 492687960}
   - {fileID: 1765361507}
   - {fileID: 772420894}
-  startMatchButton: {fileID: 550364318}
+  startBattleButton: {fileID: 550364318}
 --- !u!1 &1115720402
 GameObject:
   m_ObjectHideFlags: 0
@@ -4629,7 +4640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1153816571}
   m_Layer: 0
-  m_Name: Deck
+  m_Name: Deck Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6425,8 +6436,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.23, y: 7.85}
-  m_SizeDelta: {x: 247.92715, y: 76.73653}
+  m_AnchoredPosition: {x: 0.000053406, y: 9.5}
+  m_SizeDelta: {x: 334.7741, y: 76.7365}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1794222399
 MonoBehaviour:
@@ -6448,7 +6459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: Start Battle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2f49fe8c22d94f9a9e6cd06ad490155, type: 2}
   m_sharedMaterial: {fileID: 3074828514974314926, guid: c2f49fe8c22d94f9a9e6cd06ad490155, type: 2}
@@ -6572,7 +6583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47e713e2f951434dafbb1ee18cf167e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerExperienceManager
-  heroesDatabase: {fileID: 11400000, guid: 709632dc3667e454e86afa082a71f0be, type: 2}
 --- !u!1 &1850463644
 GameObject:
   m_ObjectHideFlags: 0
@@ -6805,8 +6815,8 @@ RectTransform:
   - {fileID: 15370102}
   m_Father: {fileID: 886681903}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.42636988, y: 0.036793593}
-  m_AnchorMax: {x: 0.5736301, y: 0.15855773}
+  m_AnchorMin: {x: 0.4126778, y: 0.0367936}
+  m_AnchorMax: {x: 0.5873222, y: 0.15855773}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

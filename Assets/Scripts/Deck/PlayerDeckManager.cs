@@ -34,7 +34,7 @@ public class PlayerDeckManager : MonoBehaviour
     [SerializeField]
     private Image[] playerDeckCardsInLobby;
     [SerializeField]
-    private Button startMatchButton;
+    private Button startBattleButton;
 
 
     private void Awake()
@@ -163,7 +163,7 @@ public class PlayerDeckManager : MonoBehaviour
                 break;
             }
         }
-        startMatchButton.interactable = isReady;//Enable or Disable start match button
+        startBattleButton.interactable = isReady;//Enable or Disable start match button
 
     }
     #endregion

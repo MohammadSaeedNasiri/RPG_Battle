@@ -7,6 +7,8 @@ public class HeroesDatabase : ScriptableObject
 {
     [SerializeField]
     private List<HeroData> heroesData;
+    [SerializeField]
+    private List<HeroData> enemyHeroesData;
 
     public int Count => heroesData.Count;
 
@@ -21,6 +23,17 @@ public class HeroesDatabase : ScriptableObject
         return heroesData[index];
     }
 
+    public HeroData GetEnemyHeroDataByIndex(int index)
+    {
+        if (index < 0 || index >= heroesData.Count)
+        {
+            Debug.LogError("Hero index out of range");
+            return null;
+        }
+
+        return enemyHeroesData[index];
+    }
+
     public HeroData GetHeroDataByID(string heroId)
     {
         foreach (var hero in heroesData)
@@ -29,6 +42,12 @@ public class HeroesDatabase : ScriptableObject
                 return hero;
         }
 
+
+        foreach (var hero in enemyHeroesData)//FOR TEST
+        {
+            if (hero.id == heroId)
+                return hero;
+        }
         Debug.LogError($"Hero with ID {heroId} not found");
         return null;
     }

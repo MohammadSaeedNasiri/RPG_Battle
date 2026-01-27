@@ -1,16 +1,60 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameUIManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("UI Panels (Win)")]
+    [SerializeField] private GameObject winPanel;
+
+    [Header("Player Heroes")]
+    [SerializeField] private Image[] heroesImage;
+    [SerializeField] private Slider[] heroesExpSlider;
+    [SerializeField] private TextMeshProUGUI[] heroesExpText;
+
+    [Header("UI Panels (Lose)")]
+    [SerializeField] private GameObject losePanel;
+
+    public void ShowWin()
     {
-        
+        if (winPanel != null)
+            MenuManager.Instance.OpenMenu(winPanel);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowHeroUpgradeExpReward(int heroIndex, HeroRuntimeData heroRuntimeData, int increaseExprienceValue)
     {
-        
+        if (heroIndex < 0 || heroIndex >= heroesImage.Length)
+            return;
+
+        heroesImage[heroIndex].sprite = heroRuntimeData.heroData.image;
+        heroesExpText[heroIndex].text = heroRuntimeData.heroExprienceData.exprience.ToString();
+        heroesExpSlider[heroIndex].maxValue = heroRuntimeData.heroExprienceData.maxExprience;
+        heroesExpSlider[heroIndex].value = heroRuntimeData.heroExprienceData.exprience;
+
+        if (heroRuntimeData.isAlive && increaseExprienceValue != 0)
+        {
+            heroesExpText[heroIndex].text += "+" + increaseExprienceValue;
+            heroesExpText[heroIndex].color = Color.yellow;
+        }
+        else
+        {
+            if (increaseExprienceValue == 0)
+            {
+                heroesExpText[heroIndex].text = "MAX";
+            }
+            else
+            {
+                heroesImage[heroIndex].color = Color.gray;
+            }
+        }
     }
+
+
+    public void ShowLose()
+    {
+        if (losePanel != null)
+            MenuManager.Instance.OpenMenu(losePanel);
+    }
+
 }
