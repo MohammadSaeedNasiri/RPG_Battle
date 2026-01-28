@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class HeroUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private SpriteRenderer heroImage;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TextMeshProUGUI damageAnimatedText;
 

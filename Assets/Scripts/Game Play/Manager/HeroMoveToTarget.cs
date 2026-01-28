@@ -5,6 +5,7 @@ public class HeroMoveToTarget : MonoBehaviour
 {
     [SerializeField] HeroAttack heroAttack;
     [SerializeField] HeroUI heroUI;
+    [SerializeField] HeroAnimationManager heroAnimationManager;
    // [SerializeField] private GameUIManager gameUIManager;
 
     [SerializeField] private float moveSpeed = 3f;
@@ -32,6 +33,7 @@ public class HeroMoveToTarget : MonoBehaviour
     {
 
         // Move to target
+        heroAnimationManager.PlayWalk();
         while (Vector2.Distance(transform.position, target.position) > attackDistance)
         {
             MoveTowards(target.position);
@@ -39,7 +41,8 @@ public class HeroMoveToTarget : MonoBehaviour
         }
 
         // Stop
-        yield return new WaitForSeconds(0.1f);
+        heroAnimationManager.PlayAttack();
+        yield return new WaitForSeconds(0.25f);
 
         // Attack
         
@@ -48,7 +51,7 @@ public class HeroMoveToTarget : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // Return
-
+        heroAnimationManager.PlayWalk();
         heroUI.RevertHeroDirection();//Change Hero Direction
         while (Vector2.Distance(transform.position, startPosition) > 0.05f)
         {
@@ -56,8 +59,9 @@ public class HeroMoveToTarget : MonoBehaviour
             yield return null;
         }
 
-        transform.position = startPosition;
 
+        transform.position = startPosition;
+        heroAnimationManager.PlayIdle();
         heroUI.RevertHeroDirection();//Change Hero Direction
 
 

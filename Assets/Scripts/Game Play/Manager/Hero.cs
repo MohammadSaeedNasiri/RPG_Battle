@@ -27,7 +27,8 @@ public class Hero : MonoBehaviour
     protected HeroRuntimeData heroRuntimeData;
     [SerializeField] private HeroUI heroUI;
     [SerializeField] protected HeroMoveToTarget heroMoveToTarget;
-    [SerializeField] protected Hero targetHero;
+    protected Hero targetHero;
+    [SerializeField] protected HeroAnimationManager heroAnimationManager;
 
     public HeroRuntimeData GetHeroRuntimeData()
     {
@@ -63,6 +64,7 @@ public class Hero : MonoBehaviour
     public void Die()
     {
         heroRuntimeData.isAlive = false;
+        heroAnimationManager.PlayDie(); 
         print("Is Deaded");
 
     }
