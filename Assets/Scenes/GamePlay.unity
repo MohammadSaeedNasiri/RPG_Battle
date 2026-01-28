@@ -457,7 +457,7 @@ GameObject:
   - component: {fileID: 76218490}
   - component: {fileID: 76218489}
   m_Layer: 5
-  m_Name: Hero Item (2)
+  m_Name: Hero Item 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,6 +603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 104668141}
   - component: {fileID: 104668142}
+  - component: {fileID: 104668143}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -620,7 +621,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.243, y: 0.9782135, z: 1}
+  m_LocalScale: {x: 0.8695381, y: 0.6875713, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 182903224}
@@ -684,6 +685,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &104668143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104668140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1422ca92594a0f24ba0496c1a23e2ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FitBackgroundToScreen
 --- !u!1 &115104306
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,6 +709,7 @@ GameObject:
   - component: {fileID: 115104310}
   - component: {fileID: 115104309}
   - component: {fileID: 115104308}
+  - component: {fileID: 115104311}
   m_Layer: 5
   m_Name: Exit Battle (Button)
   m_TagString: Untagged
@@ -818,6 +832,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115104306}
   m_CullTransparentMesh: 0
+--- !u!114 &115104311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115104306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27c7f533de287f4da7904fd4c10f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 6457cf7421db548489ee0cf4166465e0, type: 3}
 --- !u!1 &163719555
 GameObject:
   m_ObjectHideFlags: 0
@@ -967,6 +994,7 @@ GameObject:
   - component: {fileID: 171675168}
   - component: {fileID: 171675167}
   - component: {fileID: 171675166}
+  - component: {fileID: 171675169}
   m_Layer: 5
   m_Name: OK (Button)
   m_TagString: Untagged
@@ -1088,6 +1116,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171675164}
   m_CullTransparentMesh: 0
+--- !u!114 &171675169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171675164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27c7f533de287f4da7904fd4c10f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 6457cf7421db548489ee0cf4166465e0, type: 3}
 --- !u!1 &172676731
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1292,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.69954795, y: 0.7028847, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 104668141}
@@ -2176,8 +2217,8 @@ Transform:
   m_GameObject: {fileID: 352881606}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: 4.5, z: 0}
-  m_LocalScale: {x: 1.2529105, y: 1.2203, z: 1}
+  m_LocalPosition: {x: -3.5, y: 3.162981, z: 0}
+  m_LocalScale: {x: 0.876471, y: 0.85773015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 558528554}
@@ -2329,6 +2370,7 @@ GameObject:
   - component: {fileID: 373332724}
   - component: {fileID: 373332723}
   - component: {fileID: 373332722}
+  - component: {fileID: 373332725}
   m_Layer: 5
   m_Name: Exit Battle (Button)
   m_TagString: Untagged
@@ -2451,6 +2493,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373332720}
   m_CullTransparentMesh: 0
+--- !u!114 &373332725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373332720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27c7f533de287f4da7904fd4c10f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 6457cf7421db548489ee0cf4166465e0, type: 3}
 --- !u!1 &373668500
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,7 +2889,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9fc24de4f48dc0e4986600451ca8f854, type: 3}
+  m_Sprite: {fileID: -7890648774711945414, guid: 1d32b2534b9e15140905c0e3590d84c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3092,6 +3147,7 @@ GameObject:
   - component: {fileID: 587365391}
   - component: {fileID: 587365390}
   - component: {fileID: 587365389}
+  - component: {fileID: 587365392}
   m_Layer: 5
   m_Name: Next Battle (Button)
   m_TagString: Untagged
@@ -3214,6 +3270,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587365387}
   m_CullTransparentMesh: 0
+--- !u!114 &587365392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587365387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27c7f533de287f4da7904fd4c10f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 6457cf7421db548489ee0cf4166465e0, type: 3}
 --- !u!1 &588744079
 GameObject:
   m_ObjectHideFlags: 0
@@ -14644,7 +14713,7 @@ GameObject:
   - component: {fileID: 946420643}
   - component: {fileID: 946420642}
   m_Layer: 5
-  m_Name: Hero Item (1)
+  m_Name: Hero Item 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14782,7 +14851,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 412.82733, y: -235.21605}
-  m_SizeDelta: {x: 825.6547, y: 196.4321}
+  m_SizeDelta: {x: 825.65466, y: 196.4321}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &960504608
 CanvasRenderer:
@@ -15059,8 +15128,8 @@ Transform:
   m_GameObject: {fileID: 1011167227}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 1, z: 0}
-  m_LocalScale: {x: 1.2529105, y: 1.2203, z: 1}
+  m_LocalPosition: {x: 3.5, y: 0.7, z: 0}
+  m_LocalScale: {x: 0.876471, y: 0.85773015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1921550522}
@@ -15446,7 +15515,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 412.82733, y: -416.81854}
-  m_SizeDelta: {x: 825.6547, y: 146.7729}
+  m_SizeDelta: {x: 825.65466, y: 146.7729}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1118998046
 CanvasRenderer:
@@ -15593,6 +15662,7 @@ GameObject:
   - component: {fileID: 1222441265}
   - component: {fileID: 1222441264}
   - component: {fileID: 1222441263}
+  - component: {fileID: 1222441266}
   m_Layer: 5
   m_Name: Next Battle (Button)
   m_TagString: Untagged
@@ -15715,6 +15785,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222441261}
   m_CullTransparentMesh: 0
+--- !u!114 &1222441266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222441261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27c7f533de287f4da7904fd4c10f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 6457cf7421db548489ee0cf4166465e0, type: 3}
 --- !u!1 &1228979569
 GameObject:
   m_ObjectHideFlags: 0
@@ -16178,8 +16261,8 @@ Transform:
   m_GameObject: {fileID: 1377376053}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5, y: -2.5, z: 0}
-  m_LocalScale: {x: 1.2529105, y: 1.2203, z: 1}
+  m_LocalPosition: {x: -3.5, y: -1.7572117, z: 0}
+  m_LocalScale: {x: 0.876471, y: 0.85773015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 633207501}
@@ -16706,6 +16789,7 @@ GameObject:
   - component: {fileID: 1462631411}
   - component: {fileID: 1462631410}
   - component: {fileID: 1462631409}
+  - component: {fileID: 1462631412}
   m_Layer: 5
   m_Name: Resume Battle (Button)
   m_TagString: Untagged
@@ -16828,6 +16912,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462631407}
   m_CullTransparentMesh: 0
+--- !u!114 &1462631412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462631407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27c7f533de287f4da7904fd4c10f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 6457cf7421db548489ee0cf4166465e0, type: 3}
 --- !u!1 &1475601369
 GameObject:
   m_ObjectHideFlags: 0
@@ -16852,7 +16949,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475601369}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17949,7 +18046,7 @@ GameObject:
   - component: {fileID: 1696181406}
   - component: {fileID: 1696181405}
   m_Layer: 5
-  m_Name: Hero Item
+  m_Name: Hero Item 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18327,7 +18424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9fc24de4f48dc0e4986600451ca8f854, type: 3}
+  m_Sprite: {fileID: -7890648774711945414, guid: 1d32b2534b9e15140905c0e3590d84c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -18369,7 +18466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788973437}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19115,7 +19212,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9fc24de4f48dc0e4986600451ca8f854, type: 3}
+  m_Sprite: {fileID: -7890648774711945414, guid: 1d32b2534b9e15140905c0e3590d84c1, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -19278,8 +19375,8 @@ Transform:
   m_GameObject: {fileID: 2005612391}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7, y: 1, z: 0}
-  m_LocalScale: {x: 1.2529105, y: 1.2203, z: 1}
+  m_LocalPosition: {x: -4.896836, y: 0.7, z: 0}
+  m_LocalScale: {x: 0.876471, y: 0.85773015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1624839204}
@@ -19622,6 +19719,7 @@ GameObject:
   - component: {fileID: 2067228479}
   - component: {fileID: 2067228478}
   - component: {fileID: 2067228477}
+  - component: {fileID: 2067228480}
   m_Layer: 5
   m_Name: Exit Battle (Button)
   m_TagString: Untagged
@@ -19744,6 +19842,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067228475}
   m_CullTransparentMesh: 0
+--- !u!114 &2067228480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067228475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27c7f533de287f4da7904fd4c10f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: {fileID: 8300000, guid: 6457cf7421db548489ee0cf4166465e0, type: 3}
 --- !u!114 &2085032525 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3765540629413605217, guid: de58669660ee87845afed0a7b7c9b06a, type: 3}
