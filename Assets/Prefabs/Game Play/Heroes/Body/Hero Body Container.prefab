@@ -143,6 +143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Body
       objectReference: {fileID: 0}
+    - target: {fileID: 4833707230745347188, guid: e9116f4c32dc3934184060fe4ad2ba75, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5759875206408748977, guid: e9116f4c32dc3934184060fe4ad2ba75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -201,6 +205,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4727447447383037387}
     m_Modifications:
+    - target: {fileID: 432577146951457299, guid: c6d7d876132784f4f8552523a624db07, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3113811378141858578, guid: c6d7d876132784f4f8552523a624db07, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01599991
@@ -303,6 +311,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4256327157682468883, guid: c50c265112aef6f42b78783833d55f99, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5667667874323791074, guid: c50c265112aef6f42b78783833d55f99, type: 3}
       propertyPath: m_Name
       value: R Leg
@@ -376,6 +388,10 @@ PrefabInstance:
     - target: {fileID: 6567586415872899099, guid: 3f740fba3efb4544c987eda36e48ac2b, type: 3}
       propertyPath: m_Name
       value: Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220313224729007555, guid: 3f740fba3efb4544c987eda36e48ac2b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

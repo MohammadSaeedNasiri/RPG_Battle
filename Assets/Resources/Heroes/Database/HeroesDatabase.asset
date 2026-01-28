@@ -111,7 +111,7 @@ MonoBehaviour:
     unlockType: 0
     maxExprience: 10
   - id: E002
-    heroName: Hero 2
+    heroName: Enemy 2
     baseHealth: 80
     baseAttackPower: 25
     unlockType: 0
