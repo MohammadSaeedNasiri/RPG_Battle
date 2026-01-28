@@ -23,8 +23,8 @@ public class HeroUI : MonoBehaviour
         UpdateUI(hr);
        if (hr.heroType == HeroType.EnemyHero)
             RevertHeroDirection();//Change Hero Direction
-        else
-            LoadHeroSkinOnBody(hr.heroData);
+ 
+       LoadHeroSkinOnBody(hr.heroData);
     }
 
 
