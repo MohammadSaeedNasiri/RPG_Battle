@@ -34,19 +34,21 @@ public class GameEndManager : MonoBehaviour
     private void HandleWin()
     {
         Debug.Log("You Win!");
+
         // Show win UI
         gameUIManager.ShowWin();
+
         // Give rewards
         rewardManager.IncreaseHeroesExprience(battleManager.GetPlayerHeroes());
-        // Save progress
+
     }
 
     private void HandleLose()
     {
         Debug.Log("Game Over!");
-        gameUIManager.ShowLose();
 
         // Show lose UI
-        // Retry / Back to menu
+        gameUIManager.ShowLose();
+
     }
 }

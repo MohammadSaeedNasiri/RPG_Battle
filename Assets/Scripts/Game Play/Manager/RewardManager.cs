@@ -6,7 +6,7 @@ public class RewardManager : MonoBehaviour
     [SerializeField] private const int PLAYER_EXP_PER_BATTLE = 1;
     public static int HERO_EXP_PER_WIN = 5;
     private const int EXP_PER_HERO = 3;
-    private const int MAX_ACTIVE_HERO = 10;
+    private const int MAX_ACTIVE_HERO = 10 - 3;//-3 FOR Free heros (3 free hero + 7 unlocked hero = 10 heroes)
 
 
     [SerializeField] private HeroesDatabase heroesDatabase;

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 public enum UnlockType
 {
@@ -18,13 +20,54 @@ public class HeroData
     public UnlockType unlockType;//is free (is unlocked) or is not free (is player reward)
     public int maxExprience;//maximum hero exprience
 
-    [Header("Hero Sprites")]
-    public Sprite image;//Hero image for show in UI
+    
+
+
+
+
+    public string GetID() { return id; }
+
+
+
+
+    #region Hero Sprites
+    private Dictionary<string, Sprite> heroSprites;
 
     public Sprite GetHeroImage()
-        { return image; }
-    public string GetID()
     {
-        return id;
+        return LoadSprites("Hero_Image");
     }
+
+    public Sprite GetBodySprite()
+    {
+        return LoadSprites("Hero_Body");
+    }
+    public Sprite GetHandSprite() {
+        return LoadSprites("Hero_Hand");
+    }
+    public Sprite GetLeftLegSprite() {
+        return LoadSprites("Hero_LeftLeg");
+    }
+    public Sprite GetRightLegSprite() {
+        return LoadSprites("Hero_RightLeg");
+    }
+
+
+    private Sprite LoadSprites(string spriteName)
+    {
+        if (heroSprites == null)
+        {
+            heroSprites = new Dictionary<string, Sprite>();
+            Sprite[] sprites = Resources.LoadAll<Sprite>("Heroes/Sprites/" + id);
+
+            foreach (var s in sprites)
+            {
+                heroSprites.Add(s.name, s);
+
+            }
+        }
+
+        return heroSprites[spriteName];
+    }
+    #endregion
 }

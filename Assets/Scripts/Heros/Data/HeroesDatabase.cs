@@ -23,14 +23,15 @@ public class HeroesDatabase : ScriptableObject
         return heroesData[index];
     }
 
-    public HeroData GetEnemyHeroDataByIndex(int index)
+    public HeroData GetEnemyHeroDataRandomly()
     {
-        if (index < 0 || index >= heroesData.Count)
+        int index = Random.Range(0, enemyHeroesData.Count);
+        /*if (index < 0 || index >= heroesData.Count)
         {
             Debug.LogError("Hero index out of range");
             return null;
-        }
-
+        }*/
+        HeroData hero = enemyHeroesData[index];
         return enemyHeroesData[index];
     }
 

@@ -108,7 +108,7 @@ public class PlayerDeckManager : MonoBehaviour
         playerDeckCardsInLobby[slotIndex].gameObject.SetActive(deckCardHeroID != string.Empty);
         if (deckCardHeroID != string.Empty)
         {
-            playerDeckCardsInLobby[slotIndex].sprite = heroesDatabase.GetHeroDataByID(deckCardHeroID).image;
+            playerDeckCardsInLobby[slotIndex].sprite = heroesDatabase.GetHeroDataByID(deckCardHeroID).GetHeroImage();
         }
     }
     #endregion

@@ -21,7 +21,7 @@ public class PlayerDeckCard : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         {
             this.heroData = heroData;
             if (deckCardName != null)  deckCardName.text = heroData.heroName;
-            if (deckCardImage != null) deckCardImage.sprite = heroData.image;
+            if (deckCardImage != null) deckCardImage.sprite = heroData.GetHeroImage();
         }
 
         if (deckCardAdd != null) deckCardAdd.SetActive(heroData == null);

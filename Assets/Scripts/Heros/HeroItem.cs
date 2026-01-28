@@ -35,7 +35,7 @@ public class HeroItem : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         this.heroData = heroData;
         gameObject.name = heroData.heroName;
-        heroImage.sprite = heroData.image;
+        heroImage.sprite = heroData.GetHeroImage();
         heroName.text = heroData.heroName;
 
         CheckIsSelectableHero();

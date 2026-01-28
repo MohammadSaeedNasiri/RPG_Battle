@@ -11,6 +11,11 @@ public class HeroUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI damageAnimatedText;
 
 
+    [Header("Hero Body")]
+    [SerializeField] private SpriteRenderer body;
+    [SerializeField] private SpriteRenderer hand;
+    [SerializeField] private SpriteRenderer leftLeg;
+    [SerializeField] private SpriteRenderer rightLeg;
 
     public void Initialize(HeroRuntimeData hr)
     {
@@ -18,8 +23,23 @@ public class HeroUI : MonoBehaviour
 
         UpdateUI(hr);
        if (hr.heroType == HeroType.EnemyHero)
-            GetComponent<SpriteRenderer>().flipX = true;
+            RevertHeroDirection();//Change Hero Direction
+        else
+            LoadHeroSkinOnBody(hr.heroData);
     }
+
+
+
+    private void LoadHeroSkinOnBody(HeroData heroData)
+    {
+        body.sprite = heroData.GetBodySprite();
+        hand.sprite = heroData.GetHandSprite();
+        leftLeg.sprite = heroData.GetLeftLegSprite();
+        rightLeg.sprite = heroData.GetRightLegSprite();
+
+    }
+
+
 
     public void Damage(HeroRuntimeData hr,float damageValue)
     {
@@ -67,18 +87,27 @@ public class HeroUI : MonoBehaviour
         Vector3 original = transform.localScale;
         Vector3 target = original * scaleAmount;
 
-        heroImage.color = Color.red;
+        
         transform.localScale = target;
 
         yield return new WaitForSeconds(duration / 2f);
 
-        heroImage.color = Color.white;
+        //heroImage.color = Color.white;
         transform.localScale = original;
     }
     private void ShowDieAnim()
     {
-        heroImage.color = Color.gray;
+       // heroImage.color = Color.gray;
         nameText.gameObject.SetActive(false);
         healthSlider.gameObject.SetActive(false);
     }
+
+    [SerializeField] private Transform bodyContainer;
+    public void RevertHeroDirection()
+    {
+        Vector3 scale = bodyContainer.localScale;
+        scale.x *= -1;
+        bodyContainer.localScale = scale;
+    }
 }
+

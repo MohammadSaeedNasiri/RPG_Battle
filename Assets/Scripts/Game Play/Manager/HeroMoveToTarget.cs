@@ -4,6 +4,7 @@ using System.Collections;
 public class HeroMoveToTarget : MonoBehaviour
 {
     [SerializeField] HeroAttack heroAttack;
+    [SerializeField] HeroUI heroUI;
    // [SerializeField] private GameUIManager gameUIManager;
 
     [SerializeField] private float moveSpeed = 3f;
@@ -30,24 +31,25 @@ public class HeroMoveToTarget : MonoBehaviour
     private IEnumerator MoveAndAttackRoutine()
     {
 
-        // 1️⃣ حرکت به سمت هدف
+        // Move to target
         while (Vector2.Distance(transform.position, target.position) > attackDistance)
         {
             MoveTowards(target.position);
             yield return null;
         }
 
-        // 2️⃣ رسیدن → صبر 0.1 ثانیه
+        // Stop
         yield return new WaitForSeconds(0.1f);
 
-        // 3️⃣ ضربه
+        // Attack
         
         heroAttack.Attack();
-        // 4️⃣ صبر 1 ثانیه بعد از ضربه
+        // Stop
         yield return new WaitForSeconds(1f);
 
-        // 5️⃣ برگشت به مبدا
-        spriteRenderer.flipX = !spriteRenderer.flipX;
+        // Return
+
+        heroUI.RevertHeroDirection();//Change Hero Direction
         while (Vector2.Distance(transform.position, startPosition) > 0.05f)
         {
             MoveTowards(startPosition);
@@ -55,9 +57,11 @@ public class HeroMoveToTarget : MonoBehaviour
         }
 
         transform.position = startPosition;
-        spriteRenderer.flipX = !spriteRenderer.flipX; // بازگرداندن Sprite
 
-        if(!BattleManager.Instance.isPlayerTurn)
+        heroUI.RevertHeroDirection();//Change Hero Direction
+
+
+        if (!BattleManager.Instance.isPlayerTurn)
             yield return new WaitForSeconds(2f);
 
         BattleManager.Instance.OnAttackComplete();

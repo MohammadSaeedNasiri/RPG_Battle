@@ -35,7 +35,7 @@ public class GameUIManager : MonoBehaviour
         if (heroIndex < 0 || heroIndex >= heroesImage.Length)
             return;
 
-        heroesImage[heroIndex].sprite = heroRuntimeData.heroData.image;
+        heroesImage[heroIndex].sprite = heroRuntimeData.heroData.GetHeroImage();
         heroesExpText[heroIndex].text = heroRuntimeData.heroExprienceData.exprience.ToString();
         heroesExpSlider[heroIndex].maxValue = heroRuntimeData.heroExprienceData.maxExprience;
         heroesExpSlider[heroIndex].value = heroRuntimeData.heroExprienceData.exprience;
@@ -73,7 +73,7 @@ public class GameUIManager : MonoBehaviour
             MenuManager.Instance.OpenMenu(unlockedNewHeroPanel);
 
         if (newHeroImage != null)
-            newHeroImage.sprite = unlockedHeroData.image;
+            newHeroImage.sprite = unlockedHeroData.GetHeroImage();
 
     }
 

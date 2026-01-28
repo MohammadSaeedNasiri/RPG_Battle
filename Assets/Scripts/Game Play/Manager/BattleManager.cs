@@ -7,7 +7,6 @@ using UnityEngine;
 public enum GameState
 {
     Playing,
-    Paused,
     GameOver,
     Win
 }
@@ -53,9 +52,9 @@ public class BattleManager : MonoBehaviour
 
     private void SetupGame()
     {
-        //Enemy Hero Data (static for test)
+        //Enemy Hero Data (for test)
         HeroData enemyHeroData = new HeroData();
-        enemyHeroData = heroesDatabase.GetEnemyHeroDataByIndex(2);
+        enemyHeroData = heroesDatabase.GetEnemyHeroDataRandomly();
 
 
         //Spawn

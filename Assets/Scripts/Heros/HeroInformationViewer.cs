@@ -63,7 +63,7 @@ public class HeroInformationViewer : MonoBehaviour
         heroName.text = heroData.heroName;
 
         //Hero Image
-        heroImage.sprite = heroData.image;
+        heroImage.sprite = heroData.GetHeroImage();
 
         //Hero Level
         ShowDataOnUI(heroLevel, heroLevelSlider, heroExprienceData.level, heroExprienceData.maxLevel);
