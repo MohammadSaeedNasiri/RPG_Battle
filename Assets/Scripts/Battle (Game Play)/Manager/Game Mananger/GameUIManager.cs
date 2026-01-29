@@ -9,7 +9,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] private GameObject winPanel;// Panel shown when player wins
 
     [Header("Player Heroes")]
-    //[SerializeField] private Image[] heroesImage;// Hero images
+   [SerializeField] private Image[] heroesImage;// Hero images
     [SerializeField] private Slider[] heroesExpSlider;// Hero XP sliders
     [SerializeField] private TextMeshProUGUI[] heroesExpText;// Hero XP text
 
@@ -36,10 +36,10 @@ public class GameUIManager : MonoBehaviour
     // Update hero XP UI
     public void ShowHeroUpgradeExpReward(int heroIndex, HeroRuntimeData heroRuntimeData, int increaseExprienceValue)
     {
-        if (heroIndex < 0 || heroIndex >= heroesExpText.Length)
+        if (heroIndex < 0 || heroIndex >= heroesImage.Length)
             return;
 
-        //heroesImage[heroIndex].sprite = heroRuntimeData.heroData.GetHeroImage();
+        heroesImage[heroIndex].sprite = heroRuntimeData.heroData.GetHeroImage();
         heroesExpText[heroIndex].text = heroRuntimeData.heroExprienceData.exprience.ToString();
         heroesExpSlider[heroIndex].maxValue = heroRuntimeData.heroExprienceData.maxExprience;
         heroesExpSlider[heroIndex].value = heroRuntimeData.heroExprienceData.exprience;
