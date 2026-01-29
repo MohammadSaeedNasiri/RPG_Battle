@@ -1,59 +1,29 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PlayerDeckCard : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+//Player Deck Card Item
+public class PlayerDeckCard : MonoBehaviour//, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField]
-    private TextMeshProUGUI deckCardName;
-    [SerializeField]
-    private Image deckCardImage;
-    [SerializeField]
-    private GameObject deckCardAdd;
-    [SerializeField]
-    private GameObject deckCardHero;
+    [SerializeField] private TextMeshProUGUI deckCardName;//hero name
+    [SerializeField] private Image deckCardImage;//hero image
+    [SerializeField] private GameObject deckCardAdd;//add hero to deck button
+    [SerializeField] private GameObject deckCardHero;//show hero card
 
-    private HeroData heroData;
-    public void LoadDeckCard(HeroData heroData)//Load deck card - show informations
+    #region Loading deck cards
+    //Load player deck cards and show on UI
+    public void LoadDeckCard(HeroData heroData)
     {
-        if (heroData != null)
+        if (heroData != null)//if not slot empty
         {
-            this.heroData = heroData;
-            if (deckCardName != null)  deckCardName.text = heroData.heroName;
-            if (deckCardImage != null) deckCardImage.sprite = heroData.GetHeroImage();
+            deckCardName.text = heroData.heroName;
+            deckCardImage.sprite = heroData.GetHeroImage();
         }
 
-        if (deckCardAdd != null) deckCardAdd.SetActive(heroData == null);
-        if (deckCardHero != null) deckCardHero.SetActive(heroData != null);
-    }
-
-    #region Open hero inforamtion popup
-    //Click/Touch On Hero Item 
-    public bool isPointerDown = false;
-    public float pointerDownTimer = 0; //keep touch on item timer
-    private void Update()
-    {
-        if (isPointerDown)
-        {
-            pointerDownTimer += Time.deltaTime;//Increase timer
-            if (pointerDownTimer >= 2)
-            {
-                HeroInformationViewer.Instance.ShowHeroInformations(heroData);//Show information in popup
-                pointerDownTimer = 0;
-                isPointerDown = false;
-            }
-        }
-    }
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        pointerDownTimer = 0;//Reset timer
-        isPointerDown = false;//End
-    }
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        pointerDownTimer = 0;//Reset timer
-        isPointerDown = true;//Start touch/click
+        deckCardAdd.SetActive(heroData == null);//if user dont have hero on deck slot , show Add card button
+        deckCardHero.SetActive(heroData != null);//if user have hero on deck slot , show it.
     }
     #endregion
+
 }
+

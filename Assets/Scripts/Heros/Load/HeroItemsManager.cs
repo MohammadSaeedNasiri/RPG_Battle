@@ -7,24 +7,22 @@ public class HeroItemsManager : MonoBehaviour
     [Header("Using Hero Button")]
     [SerializeField] private Button useHeroButton;
 
-    private void Awake()
-    {
-        Debug.Assert(useHeroButton != null, "UseHeroButton is not assigned");
-    }
 
+    //When select a hero item , deselect other selected hero item
     public void HandleHeroSelections(HeroItem selectedHeroItem)
     {
-        //if (lastSelectedHeroItem == selectedHeroItem) return;
+
         if (lastSelectedHeroItem != null && lastSelectedHeroItem != selectedHeroItem)
         {
             lastSelectedHeroItem.DeselectHeroItem();
-
         }
+
         lastSelectedHeroItem = selectedHeroItem;
 
         useHeroButton.interactable = selectedHeroItem.GetIsSelectableHero();
     }
 
+    //return selected hero item
     public HeroItem GetSelectedHeroItem()
     {
         return lastSelectedHeroItem; 

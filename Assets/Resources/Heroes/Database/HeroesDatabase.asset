@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360f2b11dfc948e44907888e9fe84374, type: 3}
   m_Name: HeroesDatabase
   m_EditorClassIdentifier: Assembly-CSharp::HeroesDatabase
-  heroesData:
+  playerHeroesData:
   - id: H001
     heroName: Hero 1
     baseHealth: 120

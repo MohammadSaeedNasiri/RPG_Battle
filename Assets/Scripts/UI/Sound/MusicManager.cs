@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+//Using For Background Music
 [RequireComponent(typeof(AudioSource))]
 public class MusicManager : MonoBehaviour
 {

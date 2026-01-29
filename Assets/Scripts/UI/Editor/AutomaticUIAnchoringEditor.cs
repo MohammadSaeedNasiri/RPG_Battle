@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEditor;
 
+//Automatic Set UI Anchoring with select UI gameobject and press F1 Key
+//This code is just for Unity editor
 public class AutomaticUIAnchoringEditor : Editor
 {
     private static void Anchor(RectTransform rectTransform)

@@ -1,10 +1,15 @@
 using UnityEngine;
 
+
+//This code using for pick a hero from heroes list and Assign selected hero for user deck card
 public class HeroPicker : MonoBehaviour
 {
+    [Header("Dependences")]
     [SerializeField] private PlayerDeckManager playerDeckManager;
     [SerializeField] private HeroItemsManager heroItemsManager;
     [SerializeField] private HeroItemsLoader heroItemsLoader;
+
+    [Header("Select Hero Panel")]
     [SerializeField] private GameObject selectHeroPage;
 
     private int selectedSlotIndex;

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+//Form Play Clicked Button Effect Sound
 [RequireComponent(typeof(Button))]
 public class ButtonClickSound : MonoBehaviour, IPointerClickHandler
 {
@@ -15,14 +16,9 @@ public class ButtonClickSound : MonoBehaviour, IPointerClickHandler
         
     }
 
-    private void Start()
-    {
-        //Button btn = gameObject.GetComponent<Button>();
-        //btn.(PlayPointerClickSound);
-    }
     public void OnPointerClick(PointerEventData eventData)
     {
-        float volume = PlayerPrefs.GetFloat("EffectsVolume", 1f);
+        float volume = 1;// PlayerPrefs.GetFloat("EffectsVolume", 1f);
 
         if (clickSound != null)
         {
@@ -34,18 +30,4 @@ public class ButtonClickSound : MonoBehaviour, IPointerClickHandler
         }
     }
 
-
-   /*public void PlayPointerClickSound()
-    {
-        float volume = PlayerPrefs.GetFloat("EffectsVolume", 1f);
-
-        if (clickSound != null)
-        {
-            audioSource.PlayOneShot(clickSound, volume);
-        }
-        else
-        {
-            Debug.LogWarning("Click sound not assigned to: " + gameObject.name);
-        }
-    }*/
 }

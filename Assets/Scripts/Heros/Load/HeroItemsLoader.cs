@@ -1,28 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//This script loading all player hero items in UI
 public class HeroItemsLoader : MonoBehaviour
 {
-    //Dependency
-    public HeroesDatabase heroesDatabase;
-    public HeroItemsManager heroItemsManager;
-    public PlayerHerosManager playerHerosManager;
-    public PlayerDeckManager playerDeckManager;
-    public HeroInformationViewer heroInformationViewer;
+    [Header ("Dependences")]
+    [SerializeField] private HeroesDatabase heroesDatabase;
+    [SerializeField] private HeroItemsManager heroItemsManager;
+    [SerializeField] private PlayerHerosManager playerHerosManager;
+    [SerializeField] private PlayerDeckManager playerDeckManager;
+    [SerializeField] private HeroInformationViewer heroInformationViewer;
 
 
     //Prefab and Containers
-    public GameObject heroItemsPrefab;
-    public Transform heroItemsContainer;
+    [SerializeField] private GameObject heroItemsPrefab;
+    [SerializeField] private Transform heroItemsContainer;
 
     private List<HeroItem> heroItems = new List<HeroItem>();
-    void Awake()
-    {
-        Debug.Assert(heroesDatabase != null, "HeroesDatabase is not assigned");
-        Debug.Assert(heroItemsManager != null, "HeroItemsManager is not assigned");
-        Debug.Assert(heroItemsPrefab != null, "HeroItemsPrefab is not assigned");
-        Debug.Assert(heroItemsContainer != null, "HeroItemsContainer is not assigned");
-    }
+
     void Start()
     {
         LoadHeroesInUI();
@@ -30,12 +26,12 @@ public class HeroItemsLoader : MonoBehaviour
 
     void LoadHeroesInUI()
     {
-        int herosCount = heroesDatabase.Count;
+        int herosCount = heroesDatabase.PlayerHeroesCount;
 
         HeroData heroData;
         for (int i = 0; i < herosCount; i++)
         {
-            heroData = heroesDatabase.GetHeroDataByIndex(i);
+            heroData = heroesDatabase.GetPlayerHeroDataByIndex(i);
            
 
             var heroItemObj = Instantiate(heroItemsPrefab, heroItemsContainer);//Generate hero item
@@ -44,10 +40,17 @@ public class HeroItemsLoader : MonoBehaviour
                 Debug.LogError("HeroItem component missing on prefab");
                 return;
             }
-            //HeroItem heroItem = heroItemObj.GetComponent<HeroItem>();//Get HeroItem component
+
+            //Set Dependencies
             heroItem.InitDependencies(playerHerosManager, playerDeckManager, heroInformationViewer);
+
+            //Show Hero data on Hero Item
             heroItem.LoadHeroItem(heroData);
+
+            //Set On Selected Event
             heroItem.SetOnSelectedHeroEvent(heroItemsManager.HandleHeroSelections);
+
+            //Add to hero items list
             heroItems.Add(heroItem);
         }
     }

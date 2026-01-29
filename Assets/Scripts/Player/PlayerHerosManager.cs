@@ -1,11 +1,12 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class PlayerHerosManager : MonoBehaviour
 {
     public static PlayerHerosManager Instance;
+
     private const string PLAYER_HERO_KEY = "PlayerHero";
+
     [Header("Heros database")]
     public HeroesDatabase heroesDatabase;
 
@@ -25,7 +26,7 @@ public class PlayerHerosManager : MonoBehaviour
     {
         if (heroesDatabase == null) Debug.LogError("HeroesDatabase not assigned!");
 
-        if (PlayerPrefs.GetInt(PLAYER_HERO_KEY + heroID, 0) == 1 || heroesDatabase.GetHeroUnlockType(heroID) == UnlockType.DefaultUnlocked)
+        if (PlayerPrefs.GetInt(PLAYER_HERO_KEY + heroID, 0) == 1 || heroesDatabase.GetPlayerHeroUnlockType(heroID) == UnlockType.DefaultUnlocked)
         {
             return true;
         }
@@ -41,10 +42,10 @@ public class PlayerHerosManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    public List<HeroData> GetUnlockedHeroes()//NO FREE HEROES!!!
+    public List<HeroData> GetUnlockedHeroes()//NO FREE HEROES!!! heroes that unlocked by player
     {
         List<HeroData> unlockedHeros = new List<HeroData>();
-        foreach (HeroData heroData in heroesDatabase.GetAll())
+        foreach (HeroData heroData in heroesDatabase.GetAllPlayerHeroes())
         {
             if (CheckPlayerHaveHero(heroData.id) && heroData.unlockType == UnlockType.ProgressBased)
                 unlockedHeros.Add(heroData);
@@ -52,10 +53,10 @@ public class PlayerHerosManager : MonoBehaviour
         return unlockedHeros;
     }
 
-    public List<HeroData> GetLockedHeroes()
+    public List<HeroData> GetLockedHeroes()//return locked heroes
     {
         List<HeroData> lockedHeros = new List<HeroData>();
-        foreach (HeroData heroData in heroesDatabase.GetAll())
+        foreach (HeroData heroData in heroesDatabase.GetAllPlayerHeroes())
         {
             if (!CheckPlayerHaveHero(heroData.id))
                 lockedHeros.Add(heroData);
