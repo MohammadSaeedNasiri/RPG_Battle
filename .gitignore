@@ -11,7 +11,7 @@
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
 *.log
-!/Android\ Build/
+!/Android_Builds/
 !/Documents/
 
 # MemoryCaptures can get excessive in size.
@@ -60,7 +60,6 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
-*.apk
 *.aab
 *.unitypackage
 *.unitypackage.meta
